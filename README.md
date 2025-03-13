@@ -56,3 +56,5 @@ Summary of Next Steps:
     Verify the login functionality by testing different users with different roles.
     Ensure that the database is properly seeded with roles and users.
     Add further views and functionality specific to Admin, Manager, and User dashboards as per the project’s requirements.
+
+    Added some info (Bruce)

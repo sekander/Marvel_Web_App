@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/MarvelWebApp.csproj": {}
+    "/Users/bruce/Desktop/project_2025/Marvel_Web_App/MarvelWebApp.csproj": {}
   },
   "projects": {
-    "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/MarvelWebApp.csproj": {
+    "/Users/bruce/Desktop/project_2025/Marvel_Web_App/MarvelWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/MarvelWebApp.csproj",
+        "projectUniqueName": "/Users/bruce/Desktop/project_2025/Marvel_Web_App/MarvelWebApp.csproj",
         "projectName": "MarvelWebApp",
-        "projectPath": "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/MarvelWebApp.csproj",
-        "packagesPath": "/home/fnky/.nuget/packages/",
-        "outputPath": "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/obj/",
+        "projectPath": "/Users/bruce/Desktop/project_2025/Marvel_Web_App/MarvelWebApp.csproj",
+        "packagesPath": "/Users/bruce/.nuget/packages/",
+        "outputPath": "/Users/bruce/Desktop/project_2025/Marvel_Web_App/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/fnky/.nuget/NuGet/NuGet.Config"
+          "/Users/bruce/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -77,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.405/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
