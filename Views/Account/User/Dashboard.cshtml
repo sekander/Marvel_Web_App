@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    var role = User.IsInRole("Admin") ? "Admin" :
+               User.IsInRole("Manager") ? "Manager" : 
+               "User";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (role == "Admin")
+{
+    <p>Welcome, Admin! You have full access to the application.</p>
+    <!-- Add admin-specific content here -->
+}
+else if (role == "Manager")
+{
+    <p>Welcome, Manager! You have limited access compared to an Admin.</p>
+    <!-- Add manager-specific content here -->
+}
+else
+{
+    <p>Welcome, User! This is your personal dashboard.</p>
+    <!-- Add user-specific content here -->
+}
+
+<!-- Logout Button Form -->
+<form method="post" asp-action="Logout" asp-controller="Account" class="mt-3">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>

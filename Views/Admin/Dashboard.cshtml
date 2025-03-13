@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    var role = User.IsInRole("Admin") ? "Admin" :
+               User.IsInRole("Manager") ? "Manager" : 
+               "User";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (role == "Admin")
+{
+    <p style="color: brown;">Welcome, Admin! You have full access to the application.</p>
+
+    @* <div style="width: 268px; height: 104px; text-align: center; color: black; font-size: 48px; font-family: Inter; font-weight: 700; line-height: 47.29px; word-wrap: break-word">Study<br/>Buddy</div>
+    <div style="align-self: stretch; padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #007AFF; border-radius: 6px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+  <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 15px; font-family: Roboto; font-weight: 700; line-height: 20px; letter-spacing: 0.30px; word-wrap: break-word">Sign in</div>
+  <div style="width: 390px; height: 31px; text-align: center; color: #3D38F5; font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">“Track, Plan and Succeed!”</div>
+</div>
+     *@
+    <!-- Add admin-specific content here -->
+}
+else if (role == "Manager")
+{
+    <p>Welcome, Manager! You have limited access compared to an Admin.</p>
+    <!-- Add manager-specific content here -->
+}
+else
+{
+    <p>Welcome, User! This is your personal dashboard.</p>
+    <!-- Add user-specific content here -->
+}
+
+<form method="post" action="/Admin/Logout" class="mt-3">
+    @Html.AntiForgeryToken()  <!-- This token is required for security -->
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>
+
+@* In Admin Dashboard View
+<form method="post" action="/logout" class="mt-3">
+    @Html.AntiForgeryToken()  <!-- This token is required for security -->
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form> *@
+
+    @* <form asp-controller="Admin" asp-action="Logout" method="post" style="display:inline;">
+        <button type="submit" class="btn btn-link">Logout</button>
+    </form> *@
+
+@* <form method="post" action="@Url.Action("Logout", "Admin")">
+ <form method="get" action="@Url.Action("Logout", "Admin")"> *@
+    @* <button type="submit" class="btn btn-danger">Logout</button>
+</form>  *@
+
+<!-- Test Button Form (to check /Admin/Test route) -->
+@* <form method="get" action="@Url.Action("Test", "Admin")">
+    <button type="submit" class="btn btn-info">Test Route</button>
+</form> *@
+<!-- Test Button Form (to check /Admin/Test route) -->
+ @* <form method="get" action="@Url.Action("GetAllUsers", "Admin")"> *@
+ <form method="get" action="@Url.Action("Test", "Admin")">
+    <button type="submit" class="btn btn-info">Test Route</button>
+</form> 
+
+
+<!-- Logout Button Form -->
