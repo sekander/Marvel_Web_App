@@ -18,6 +18,7 @@
 </div>
      *@
     <!-- Add admin-specific content here -->
+    
 }
 else if (role == "Manager")
 {
@@ -28,7 +29,55 @@ else
 {
     <p>Welcome, User! This is your personal dashboard.</p>
     <!-- Add user-specific content here -->
+    
+
 }
+<div id="comicsList"></div>
+
+<script>
+            
+             document.getElementById('comicsList').innerHTML += "hi";
+                
+      
+
+    fetch('/api/manager/comic/1000')  // ASP.NET Core routing URL
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            
+            return response.json();  // Parse the response as JSON
+        })
+        .then(data => {
+            console.log(data);
+
+            console.log(data.comic.characterID)
+
+            @* <img src=${data.comic.thumbnailURL}/> *@
+            // Create an image element dynamically
+            const comicImage = document.createElement('img');
+            comicImage.src = data.comic.thumbnailURL + ".jpg"; // Set the source of the image
+            comicImage.alt = `${data.comic.title} cover`; // Optional: set alt text for the image
+            comicImage.width = 150; // Set image size, adjust as necessary
+
+            comicsList.appendChild(comicImage);  // Adds the image to the DOM
+
+            //const comics = data.comic || [];  // Use an empty array as a fallback if `results` is undefined
+            // Loop through the data and append each comic to the #comicsList
+            //comics.forEach(comic => {
+            //    console.log(comic);
+            //    document.getElementById('comicsList').innerHTML += 
+            //        `<li>${comic.title} (Issue: ${comic.issueNumber}, $${comic.price})</li>`;
+            //});
+        })
+        .catch(error => {
+            console.error("Error retrieving comics: " + error);
+        });
+
+          
+        
+    </script>
+
 
 <form method="post" action="/Admin/Logout" class="mt-3">
     @Html.AntiForgeryToken()  <!-- This token is required for security -->
