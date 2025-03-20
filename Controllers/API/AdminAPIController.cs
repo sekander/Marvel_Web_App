@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarvelWebApp.Controllers
 {
-    [Route("api/test")]
+    [Route("api/admin")]
     [ApiController]
     public class AdminAPIController : BaseEntityController<ApplicationUser>
     {

@@ -4,6 +4,7 @@ using MarvelWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MarvelWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250319235319_newAttribut")]
+    partial class newAttribut
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,6 +104,23 @@ namespace MarvelWebApp.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("MarvelWebApp.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("CategoryID"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("CategoryID");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("MarvelWebApp.Models.Character", b =>
                 {
                     b.Property<int>("CharacterID")
@@ -156,6 +176,9 @@ namespace MarvelWebApp.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("int");
+
                     b.Property<int>("CharacterID")
                         .HasColumnType("int");
 
@@ -208,6 +231,8 @@ namespace MarvelWebApp.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("Comics");
                 });
@@ -527,6 +552,14 @@ namespace MarvelWebApp.Migrations
                     b.HasOne("MarvelWebApp.Models.ApplicationUser", null)
                         .WithMany("ComicsCollection")
                         .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("MarvelWebApp.Models.Category", "Category")
+                        .WithMany("Comics")
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("MarvelWebApp.Models.Order", b =>
@@ -656,6 +689,11 @@ namespace MarvelWebApp.Migrations
                     b.Navigation("ComicsCollection");
 
                     b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("MarvelWebApp.Models.Category", b =>
+                {
+                    b.Navigation("Comics");
                 });
 
             modelBuilder.Entity("MarvelWebApp.Models.Character", b =>

@@ -23,11 +23,6 @@ public class EntityService<T> : IEntityService<T> where T : class
     }
 
 
-    // // Retrieve DbSets for specific entity types
-    // public DbSet<Player> GetPlayers(){return _db.Players;}
-    // public DbSet<Deck> GetDecks(){return _db.Decks;}
-    // public DbSet<Card> GetCards(){return _db.Cards;}
-    // public DbSet<CardDeck> GetCardDecks(){return _db.CardDecks;}
 
     // Fetch all entities of type T asynchronously
     async Task<List<T>> IEntityService<T>.GetAllEntityAsync()
@@ -40,6 +35,8 @@ public class EntityService<T> : IEntityService<T> where T : class
     {
         return await _db.Set<T>().FindAsync(id);
     }
+    
+
 
     // Add a new entity to the database asynchronously
     public async Task CreateEntityAsync(T entity)
