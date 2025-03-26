@@ -1,3 +1,4 @@
+@using System.Linq
 @{
     ViewData["Title"] = "Dashboard";
     var role = User.IsInRole("Admin") ? "Admin" :
@@ -17,7 +18,43 @@
   <div style="width: 390px; height: 31px; text-align: center; color: #3D38F5; font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">“Track, Plan and Succeed!”</div>
 </div>
      *@
+
     <!-- Add admin-specific content here -->
+    <h1>Admin Dashboard</h1>
+    <h2>User Management</h2>
+
+    @if (Model.Count > 0)
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>User ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.FirstName</td>
+                        <td>@user.LastName</td>
+                        @* <td>@user.</td>
+                        <td>@user.Id</td> *@
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <a asp-controller="" asp-action="CreateUser" class="btn btn-success">
+            Add New User
+        </a>
+    }
+    else
+    {
+        <div class="alert alert-info">No users found in the database.</div>
+    }
     
 }
 else if (role == "Manager")

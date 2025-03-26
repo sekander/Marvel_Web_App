@@ -26,11 +26,13 @@ namespace MarvelWebApp.Controllers
             _roleManager = roleManager;
         }
 
+
         // GET: api/admin/users
         [HttpGet("users")]
         public async Task<IActionResult> GetAllUsers()
         {
             return await GetAllEntities();
+            
         }
         // GET: api/admin/users/email/{email}
         [HttpGet("users/email/{email}")]

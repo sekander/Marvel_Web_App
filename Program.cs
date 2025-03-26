@@ -3,10 +3,18 @@ using Microsoft.EntityFrameworkCore;
 using MarvelWebApp.Data;
 using MarvelWebApp.Models;
 using MarvelWebApp.Interface;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+// Swagger
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Marvel API", Version = "v1" });
+});
+
 
 // Configure MySQL with Pomelo
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -23,6 +31,10 @@ builder.Services.AddScoped(typeof(IEntityService<>), typeof(EntityService<>));
 
 
 var app = builder.Build();
+
+// swagger middleware
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Marvel API v1"));
 
 // Seed the database with roles and default users
 using (var scope = app.Services.CreateScope())
