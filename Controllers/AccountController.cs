@@ -27,7 +27,7 @@ namespace MarvelWebApp.Controllers
         // POST: /Account/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
-            [Route("Account/Login")]
+        [Route("Account/Login")]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             Console.WriteLine("Login attempt");
@@ -37,7 +37,7 @@ namespace MarvelWebApp.Controllers
 
                 if (user != null)
                 {
-                        Console.WriteLine("User exists");
+                    Console.WriteLine("User exists");
                     var result = await _signInManager.PasswordSignInAsync(user, model.Password, isPersistent: false, lockoutOnFailure: false);
 
                     if (result.Succeeded)
@@ -52,11 +52,11 @@ namespace MarvelWebApp.Controllers
                         {
                             Console.WriteLine("Admin Success");
                             // return View("Admin/Dashboard");
-                                    return RedirectToAction("Dashboard", "Admin");
-                                    // return RedirectToAction("Dashboard", "AdminView");
-                                    // return RedirectToAction("Dashboard", "AdminView/Dashboard");
-                                    // return RedirectToAction("Dashboard", "Admin/Dashboard");
-                            
+                            return RedirectToAction("Dashboard", "Admin");
+                            // return RedirectToAction("Dashboard", "AdminView");
+                            // return RedirectToAction("Dashboard", "AdminView/Dashboard");
+                            // return RedirectToAction("Dashboard", "Admin/Dashboard");
+
 
                         }
                         else if (roles.Contains("Manager"))
@@ -78,13 +78,13 @@ namespace MarvelWebApp.Controllers
                     }
                     else
                     {
-                            Console.WriteLine("Default Success");
+                        Console.WriteLine("Default Success");
                         ViewData["ErrorMessage"] = "Invalid login attempt.";
                     }
                 }
                 else
                 {
-                            Console.WriteLine("Default Success");
+                    Console.WriteLine("Default Success");
                     ViewData["ErrorMessage"] = "User does not exist.";
                 }
             }

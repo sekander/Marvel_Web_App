@@ -1,0 +1,45 @@
+@model IEnumerable<MarvelWebApp.Models.Comic>
+
+@{
+  ViewData["Title"] = "Manager Dashboard";
+}
+
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Comic Inventory Management</h2>
+    <a href="/Manager/Create" class="btn btn-success">Add Comics</a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Series</th>
+          <th>Issue #</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Release Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var comic in Model)
+        {
+          <tr>
+            <td>@comic.Title</td>
+            <td>@comic.Series</td>
+            <td>@comic.IssueNumber</td>
+            <td>@comic.Price.ToString("C")</td>
+            <td>@comic.Quantity</td>
+            <td>@comic.ReleaseDate.ToShortDateString()</td>
+            <td>
+              <a href="#" class="btn btn-sm btn-primary">Edit</a>
+              <a href="#" class="btn btn-sm btn-info">Details</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

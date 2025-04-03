@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MarvelWebApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+afd1f1a99a16e24ed82fcecd4f668b954a7b7539")]
 [assembly: System.Reflection.AssemblyProductAttribute("MarvelWebApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MarvelWebApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
