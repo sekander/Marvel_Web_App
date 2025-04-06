@@ -2439,24 +2439,31 @@
     ]
   },
   "packageFolders": {
-    "/home/fnky/.nuget/packages/": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/MarvelWebApp.csproj",
+      "projectUniqueName": "D:\\Humber College\\Marvel\\MarvelWebApp.csproj",
       "projectName": "MarvelWebApp",
-      "projectPath": "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/MarvelWebApp.csproj",
-      "packagesPath": "/home/fnky/.nuget/packages/",
-      "outputPath": "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/obj/",
+      "projectPath": "D:\\Humber College\\Marvel\\MarvelWebApp.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "D:\\Humber College\\Marvel\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/fnky/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2514,7 +2521,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.405/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\8.0.405/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

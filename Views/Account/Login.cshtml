@@ -1,12 +1,41 @@
+
 @page
 @model MarvelWebApp.Models.LoginViewModel
 @{
     @* ViewData["Title"] = "Login"; *@
 }
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+
+<nav class="navbar">
+    <div class="logo-container">
+        <img src="~/logo.svg" alt="Logo" class="logo" />
+    </div>
+
+    <div class="navbar-links">
+        <div class="navbar-link active">HOME</div>
+        <div class="navbar-link">COMICS</div>
+    </div>
+
+    <button>
+        <span class="sign-in-text" >Sign In</span>
+        <div  class="arrow-icon">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        </div>
+    </button>
+</nav>
 @* <h2>@ViewData["Title"]</h2> *@
 
-<form method="post">
+<section style="margin:auto">
+<div class="wrap">
+<div class="logo-container center">
+    <img src="~/logo.svg" alt="Logo" class="logo" />
+   
+</div>
+        <h1 style="text-align:center;">Sign In</h1>
+
+<form method="post" class="signin-form">
     @Html.AntiForgeryToken()  <!-- Add this line to include the anti-forgery token -->
     <div class="form-group">
         <label for="Input_Email">Email</label>
@@ -19,11 +48,26 @@
         <label for="Input_Password">Password</label>
         <input type="password" id="Input_Password" name="Password" class="form-control" required />
                 @* <input type="password" id="Password" name="Password" class="form-control" required /> *@
+                <br></br> <a href="#"><div style="text-align:right">Forgot your password?</div></a>
     </div>
+            
 
-    <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary center">Login</button>
 </form>
-
+<div style="text-align:center" class="dont-have-account-container">
+    <span>Don’t have account ? </span>
+    <span class="create-account">Create Account</span>
+</div>
+    </div>
+</section>
+<footer class="footer">
+   
+    <div class="footer-container">
+    
+            <div class="footer-text">©2025 MARVEL</div>
+        
+    </div>
+</footer>
 @* @if (ViewData["ErrorMessage"] != null)
 {
     <div class="alert alert-danger mt-3">
