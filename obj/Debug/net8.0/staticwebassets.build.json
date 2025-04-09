@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SGfHbrnj/Hsok0T9Zh05zh3u5JHd5kpNzBjyagWtMLQ=",
+  "Hash": "CmgrvFDqr9uJnE4DU4zxl4mVPX0nIC2hUnxR2/HKGpI=",
   "Source": "MarvelWebApp",
   "BasePath": "_content/MarvelWebApp",
   "Mode": "Default",
@@ -1212,6 +1212,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\logo.svg"
+    },
+    {
+      "Identity": "D:\\Humber College\\Marvel\\wwwroot\\ManagerProfile.jpg",
+      "SourceId": "MarvelWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Humber College\\Marvel\\wwwroot\\",
+      "BasePath": "_content/MarvelWebApp",
+      "RelativePath": "ManagerProfile.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ManagerProfile.jpg"
     }
   ]
 }

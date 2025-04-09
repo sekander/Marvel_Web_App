@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="site.css" />
+</head>
+
+<body>
+
+
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo.svg" alt="Logo" class="logo" />
+        </div>
+
+        <div class="navbar-links">
+            <div class="navbar-link active">HOME</div>
+            <div class="navbar-link">COMICS</div>
+        </div>
+        <div class="container">
+
+            <form method="post" action="/Admin/Logout" class="mt-3">
+
+
+                <button type="submit">Logout
+                    <div class="arrow-icon">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    </div>
+                </button>
+
+        </div>
+        </form>
+        </div>
+    </nav>
+    <section class="wrap center">
+
+        <div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-left">
+
+                <div class="mask-group-wrapper">
+                    <br><br>
+                    <img class="mask-group-icon" alt="" src="~/ManagerProfile.jpg">
+
+                </div>
+                <br><br>
+                <div class="title">MANAGER</div>
+                <br><br>
+                <a href="#">
+                    <div class="task">SETTING</div>
+                </a>
+
+            </div>
+            <div class="col-right">
+
+                <h1>Create New Book </h1> <br>
+                <div class="back">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <div class="button-label">Back</div>
+
+                </div>
+                <br>
+
+                <div class="comic">
+                    <img src="image/portrait_uncanny.jpg" alt="">
+
+                    <div class="comic-info">
+                        <h2>Marvel Universe Ultimate Spider-Man: Spider-Verse (2018) #5</h2>
+                        <div class="frame-parent">
+                            <div class="published-parent">
+
+                                <h5>Published</h5>
+                                <p class="info">June 19, 2018</p>
+
+                            </div>
+                            <div class="published-parent">
+
+                                <h5>Writer</h5>
+
+                                <p class="info">Vc Joe Caramagna</p>
+                            </div>
+                        </div>
+                        <div class="frame-parent">
+                            <div class="published-parent">
+                                <h5>Cover Artist</h5>
+                                <p class="info">Various</p>
+                            </div>
+                            <div class="published-parent">
+                                <h5>Pencil</h5>
+                                <p class="info">Various</p>
+
+                            </div>
+                        </div>
+                        <p>The Green Goblin is on a Spider-DNA-stealing rampage through multiple dimensions…this time
+                            running afoul of the Medieval Age’s Spyder-Knight!</p>
+                        <div class="frame-parent">
+                            <div class="published-parent">
+                                <H5>Price</h5>
+                                <p class="info">$ 12.99</p>
+                            </div>
+                            <div class="published-parent">
+                                <h5>Stock</h5>
+                                <p class="info">999</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-parent">
+                    <a href="">
+                        <button>Update
+                            <div class="arrow-icon">
+                                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            </div>
+                        </button>
+                    </a>
+                    <a href="">
+                        <button class="button2">Delete
+                            <div class="arrow-icon">
+                                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            </div>
+                        </button>
+                    </a>
+                </div>
+   <!-- Add admin-specific content here -->
+            </div>
+        </div>
+
+        <div id="comicsList"></div>
+
+
+
+
+
+
+
+    </section>
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-text">©2025 MARVEL</div>
+
+        </div>
+    </footer>
+
+    <!-- Logout Button Form -->
+</body>
+
+</html>

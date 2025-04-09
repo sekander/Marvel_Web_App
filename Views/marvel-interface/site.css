@@ -1,0 +1,765 @@
+html {
+  font-size: 14px;
+}
+hr {
+  color: #fff;
+}
+a {
+  color: #fff;
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+p{
+    text-align: left;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding: 0px;
+  margin-bottom: 60px;
+  background-color: #000 !important;
+}
+h1,
+h2,
+h3,
+h4 {
+  color: #fff !important;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h2{text-align: left;}
+
+body {
+  font-family: "Outfit", sans-serif;
+  color: #fff;
+}
+
+button {
+    gap: 8px;
+    display:flex;
+    padding: 12px 28px;
+    background-color: #ed1b24;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+  }
+.hero-image {
+   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+   background-image:  url("image/cover.jpg");
+
+   /* Set a specific height */
+   height: 50vh;
+
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: relative;
+  
+}
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 60px;
+  background-color: #333;
+}
+.navbar .container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Logo container */
+.logo-container {
+  width: 112px;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 112px;
+  height: 45px;
+}
+
+/* Navbar links */
+.navbar-links {
+  display: flex;
+  gap: 40px;
+}
+
+.navbar-link {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase; /* Optional for more formal look */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #e90909;
+}
+
+.navbar-link.active {
+  color: #e90909;
+}
+
+.wrap {
+  padding: 24px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 60px auto;
+}
+
+/* Optional: You can add a hover effect to the "Sign In" button */
+.row {
+  display: flex;
+}
+
+.col-left {
+  flex: 20%;
+  gap: 16px;
+  margin: auto;
+}
+.col-right {
+  border-left: solid 1px #fff;
+  flex: 80%;
+  padding: 20px;
+}
+.center {
+  margin: auto;
+}
+
+.signin-form {
+  margin: auto;
+  max-width: 800px;
+}
+.comic{
+    display: flex;
+    flex-direction: row;
+width: 100%;
+align-items: flex-start;
+gap: 36px;
+}
+
+.create-account {
+  color: #ed1b24;
+}
+
+.dont-have-account-container {
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: left;
+  color: #fff;
+}
+
+.arrow-icon {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Optional: You can add a hover effect to the "Sign In" button */
+.sign-in-btn:hover {
+  background-color: #d21f27;
+}
+/* Footer */
+
+.footer {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.footer-container {
+  border-top: solid 1px #fff;
+  display: flex;
+  flex: 1 1 0;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 40px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-text {
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+/* Style for form groups (label and input) */
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #fff;
+}
+
+input {
+  background-color: #000;
+  color: #fff;
+}
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+.form-group {
+  margin-bottom: 40px;
+}
+
+.mask-group-icon {
+  width: 108px;
+  position: relative;
+  height: 108px;
+  object-fit: cover;
+}
+
+.mask-group-wrapper {
+  width: 315px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 1;
+}
+
+.title {
+  position: relative;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  text-align: left;
+}
+
+.task {
+  position: relative;
+  font-size: 26px;
+  color: #fff;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.text-row {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+
+.text {
+  padding: 8px;
+}
+/* Styling for the table */
+.manager-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+/* Table header */
+.manager-table thead {
+  background-color: #565656;
+  height: 44px;
+  display: table; /* Revert to table layout */
+  text-align: left;
+  font-size: 14px;
+  color: #fff;
+  font-family: Poppins;
+}
+
+.manager-table th,
+.manager-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+/* Styling for the header cells */
+.manager-table th {
+  color: #fff;
+}
+
+/* Alternating row colors */
+.manager-table tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light gray for even rows */
+}
+
+/* Hover effect for rows */
+.manager-table tr:hover {
+  background-color: #ddd;
+}
+
+/* Table data cells */
+.manager-table td {
+  color: #333;
+}
+
+.back {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  font-size: 16px;
+  color: #ed1b24;
+  gap: 8px;
+}
+
+
+
+.published-parent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+}
+.info {
+
+  font-size: 20px;
+  font-weight: 600;
+}
+.frame-parent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 24px;
+}
+/* .the-green-goblin {
+  width: 548px;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  flex-shrink: 0;
+} */
+/* Manager Viewform */
+.marvel-universe-ultimate-spide-parent {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+}
+.button-parent {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+  text-align: left;
+  font-size: 16px;
+  color: #fff;
+  font-family: Outfit;
+}
+
+.portrait-uncanny-icon {
+  width: 267px;
+  position: relative;
+  max-height: 100%;
+  object-fit: cover;
+}
+.portrait-uncanny-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.frame-child {
+  align-self: stretch;
+  height: 20.5px;
+}
+
+.book-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 36px;
+}
+.book-wrapper {
+  display: flex;
+  gap: 16px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.dollar-parent {
+  width: 100%;
+  margin-left: auto;
+  gap: 8px;
+  text-align: right;
+
+}
+.dollar {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.quantity {
+  position: relative;
+  line-height: 24px;
+}
+.div {
+  position: relative;
+  letter-spacing: 0.01em;
+}
+.parent {
+  width: 87.5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  font-size: 36px;
+}
+.input-field-blank {
+  flex: 1;
+  border: 1px solid #dde1eb;
+  box-sizing: border-box;
+  height: 41px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 27px;
+  gap: 0px;
+}
+.input-field-blank-wrapper {
+  align-self: stretch;
+  height: 41px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 13px;
+  font-family: Poppins;
+}
+.quantity-parent {
+  text-align: left;
+  align-self: stretch;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 16px;
+}
+.button-label {
+  position: relative;
+}
+.button2 {
+background-color: black;
+  border: 1.5px solid #ed1b24;
+  border-radius: 4px;
+  padding: 16px 28px;
+  color: #ed1b24;
+}
+.frame-div {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 24px;
+  font-size: 16px;
+}
+.comic-info {
+
+  display: flex;
+  flex-direction: column;
+ 
+  justify-content: center;
+  gap: 24px;
+}
+.shoppingCartFrame {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 36px;
+  text-align: left;
+  font-size: 32px;
+  color: #fff;
+}
+.pay{
+    margin-left: auto;
+}
+
+
+/* card */
+.card-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap; 
+  margin-bottom: 36px;
+}
+.card-image {
+   width: 100%;
+    position: relative;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+
+.detail{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.detail i {
+    width: 32px;
+    
+}
+.card {
+    position: relative;
+    width: 233px;;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 10px;
+    text-align: left;
+    font-size: 18px;
+
+
+}
+.search{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+.search input {
+   flex: 1; /* or give them fixed widths */
+}
+
+
+/* charater card */
+
+    .charaterName {
+    align-self: stretch;
+    background-color: #ed1b24;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px 6px;
+    }
+    .charactercard {
+    width: 160px;
+    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+    text-align: left;
+    font-size: 20px;
+    color: #fff;
+   
+    }
+    
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .manager-table {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .manager-table th,
+  .manager-table td {
+    padding: 8px 10px; /* Smaller padding on smaller screens */
+  }
+
+  /* Make each row and cell behave like a block element */
+  .manager-table,
+  .manager-table tr,
+  .manager-table td {
+    display: block;
+    width: 100%; /* Ensure full-width on smaller screens */
+  }
+
+  .manager-table td {
+    text-align: right;
+    position: relative;
+    padding-left: 40%; /* Adjusted padding for readability */
+  }
+
+  /* Add labels to table data cells for mobile view */
+  .manager-table td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+  }
+
+  /* Hide the table header on small screens */
+  .manager-table thead {
+    display: none; /* Hide header on small screens */
+  }
+}
+/* Basic Styling for Minimalist Table */
+table.minimalistBlack {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table.minimalistBlack td,
+table.minimalistBlack th {
+  border: 1px solid #ddd; /* Light gray border for better separation */
+  padding: 8px 10px; /* Adjust padding for better readability */
+}
+
+/* Styling for Table Body Cells */
+table.minimalistBlack tbody td {
+  font-size: 13px; /* Slightly smaller text */
+  color: #ffffff; /* Dark text for readability */
+}
+
+/* Header Styling with Gradient */
+table.minimalistBlack thead {
+  background: #818181;
+  background: -moz-linear-gradient(top, #a0a0a0 0%, #8d8d8d 66%, #818181 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #a0a0a0 0%,
+    #8d8d8d 66%,
+    #818181 100%
+  );
+  background: linear-gradient(to bottom, #a0a0a0 0%, #8d8d8d 66%, #818181 100%);
+}
+
+/* Styling for Header Cells */
+table.minimalistBlack thead th {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: left;
+  padding: 12px 15px; /* Larger padding for header */
+}
+
+/* Footer Styling (Optional) */
+table.minimalistBlack tfoot td {
+  font-size: 14px; /* Slightly smaller text in footer */
+  padding: 10px 12px; /* More padding for footer cells */
+  background-color: #f4f4f4; /* Light background color for footer */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  table.minimalistBlack {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  table.minimalistBlack td,
+  table.minimalistBlack th {
+    padding: 6px 8px; /* Adjust padding for smaller screens */
+  }
+
+  /* Stack table rows vertically for smaller screens */
+  table.minimalistBlack,
+  table.minimalistBlack tbody,
+  table.minimalistBlack tr,
+  table.minimalistBlack td {
+    display: block;
+    width: 100%;
+  }
+
+  /* Add labels to table data cells for mobile view */
+  table.minimalistBlack td {
+    text-align: right;
+    position: relative;
+    padding-left: 40%; /* Adjusted padding for readability */
+  }
+
+  table.minimalistBlack td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+  }
+
+  /* Hide the table header on small screens */
+  table.minimalistBlack thead {
+    display: none;
+  }
+}

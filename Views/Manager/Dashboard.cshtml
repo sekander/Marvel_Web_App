@@ -1,8 +1,8 @@
 @{
     ViewData["Title"] = "Dashboard";
     var role = User.IsInRole("Admin") ? "Admin" :
-               User.IsInRole("Manager") ? "Manager" : 
-               "User";
+    User.IsInRole("Manager") ? "Manager" :
+    "User";
 }
 
 <h2>@ViewData["Title"]</h2>

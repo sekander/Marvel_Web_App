@@ -1,54 +1,46 @@
-@{
-    ViewData["Title"] = "Dashboard";
-    var role = User.IsInRole("Admin") ? "Admin" :
-    User.IsInRole("Manager") ? "Manager" :
-    "User";
-}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="site.css" />
+</head>
+
+<body>
 
 
-<link rel="stylesheet" href="~/css/site.css" />
+    
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo.svg" alt="Logo" class="logo" />
+        </div>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<nav class="navbar">
-    <div class="logo-container">
-        <img src="~/logo.svg" alt="Logo" class="logo" />
-    </div>
+        <div class="navbar-links">
+            <div class="navbar-link active">HOME</div>
+            <div class="navbar-link">COMICS</div>
+        </div>
+        <div class="container">
+           
+                <button type="submit">Logout
+                    <div class="arrow-icon">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    </div>
+                </button>
 
-    <div class="navbar-links">
-        <div class="navbar-link active">HOME</div>
-        <div class="navbar-link">COMICS</div>
-    </div>
-    <div class="container">
-        @if (role == "Admin")
-        {
-            <p>ADMIN</p>
+        </div>
+        </form>
+        </div>
+    </nav>
+    <section class="wrap center">
 
-        }
-        else if (role == "Manager")
-        {
-            <p>MANAGER</p>
-        }
-        <form method="post" action="/Admin/Logout" class="mt-3">
+        <div>
 
-            @Html.AntiForgeryToken() <!-- This token is required for security -->
-            <button type="submit" class="btn btn-danger">Logout
-                <div class="arrow-icon">
-                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                </div>
-            </button>
-
-    </div>
-    </form>
-    </div>
-</nav>
-<section class="wrap center">
-
-    <div>
-
-    </div>
-    <h2>@ViewData["Title"]</h2>
-    @if (role == "Admin")
-    {
+        </div>
+        <h2>@ViewData["Title"]</h2>
+      
 
         <div class="row">
             <div class="col-left">
@@ -265,107 +257,30 @@
 
 
 
-                @* <div style="width: 268px; height: 104px; text-align: center; color: black; font-size: 48px; font-family: Inter; font-weight: 700; line-height: 47.29px; word-wrap: break-word">Study<br/>Buddy</div>
-    <div style="align-self: stretch; padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #007AFF; border-radius: 6px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-  <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 15px; font-family: Roboto; font-weight: 700; line-height: 20px; letter-spacing: 0.30px; word-wrap: break-word">Sign in</div>
-  <div style="width: 390px; height: 31px; text-align: center; color: #3D38F5; font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">“Track, Plan and Succeed!”</div>
-</div>
-     *@
+
                 <!-- Add admin-specific content here -->
             </div>
         </div>
-    }
-    else if (role == "Manager")
-    {
-        <p>Welcome, Manager! You have limited access compared to an Admin.</p>
-        <!-- Add manager-specific content here -->
-    }
-    else
-    {
-        <p>Welcome, User! This is your personal dashboard.</p>
-        <!-- Add user-specific content here -->
-    }
-    <div id="comicsList"></div>
-
-    <script>
-
-        document.getElementById('comicsList').innerHTML += "hi";
-
-
-
-        fetch('/api/manager/comic/1000')  // ASP.NET Core routing URL
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-
-                return response.json();  // Parse the response as JSON
-            })
-            .then(data => {
-                console.log(data);
-
-                console.log(data.comic.characterID)
-
-                @* <img src=${data.comic.thumbnailURL}/> *@
-            // Create an image element dynamically
-            const comicImage = document.createElement('img');
-                comicImage.src = data.comic.thumbnailURL + ".jpg"; // Set the source of the image
-                comicImage.alt = `${data.comic.title} cover`; // Optional: set alt text for the image
-                comicImage.width = 150; // Set image size, adjust as necessary
-
-                comicsList.appendChild(comicImage);  // Adds the image to the DOM
-
-                //const comics = data.comic || [];  // Use an empty array as a fallback if `results` is undefined
-                // Loop through the data and append each comic to the #comicsList
-                //comics.forEach(comic => {
-                //    console.log(comic);
-                //    document.getElementById('comicsList').innerHTML +=
-                //        `<li>${comic.title} (Issue: ${comic.issueNumber}, $${comic.price})</li>`;
-                //});
-            })
-            .catch(error => {
-                console.error("Error retrieving comics: " + error);
-            });
-
-
-
-    </script>
+      
+        <div id="comicsList"></div>
 
 
 
 
-    @* In Admin Dashboard View
-<form method="post" action="/logout" class="mt-3">
-    @Html.AntiForgeryToken()  <!-- This token is required for security -->
-    <button type="submit" class="btn btn-danger">Logout</button>
-</form> *@
 
-    @* <form asp-controller="Admin" asp-action="Logout" method="post" style="display:inline;">
-        <button type="submit" class="btn btn-link">Logout</button>
-    </form> *@
 
-    @* <form method="post" action="@Url.Action("Logout", "Admin")">
- <form method="get" action="@Url.Action("Logout", "Admin")"> *@
-    @* <button type="submit" class="btn btn-danger">Logout</button>
-</form>  *@
+       
+    </section>
+    <footer class="footer">
 
-    <!-- Test Button Form (to check /Admin/Test route) -->
-    @* <form method="get" action="@Url.Action("Test", "Admin")">
-    <button type="submit" class="btn btn-info">Test Route</button>
-</form> *@
-    <!-- Test Button Form (to check /Admin/Test route) -->
-    @* <form method="get" action="@Url.Action("GetAllUsers", "Admin")"> *@
-    <form method="get" action="@Url.Action("Test", "Admin")">
-        <button type="submit" class="btn btn-info">Test Route</button>
-    </form>
-</section>
-<footer class="footer">
+        <div class="footer-container">
 
-    <div class="footer-container">
+            <div class="footer-text">©2025 MARVEL</div>
 
-        <div class="footer-text">©2025 MARVEL</div>
+        </div>
+    </footer>
 
-    </div>
-</footer>
+    <!-- Logout Button Form -->
+</body>
 
-<!-- Logout Button Form -->
+</html>

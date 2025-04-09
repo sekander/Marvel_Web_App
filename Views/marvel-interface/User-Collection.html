@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="site.css" />
+</head>
+
+<body>
+
+
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo.svg" alt="Logo" class="logo" />
+        </div>
+
+        <div class="navbar-links">
+            <div class="navbar-link active">HOME</div>
+            <div class="navbar-link">COMICS</div>
+        </div>
+        <div class="container">
+           
+            <form method="post" action="/Admin/Logout" class="mt-3">
+
+                @Html.AntiForgeryToken() <!-- This token is required for security -->
+                <button type="submit">Logout
+                    <div class="arrow-icon">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    </div>
+                </button>
+
+        </div>
+        </form>
+        </div>
+    </nav>
+    <section class="wrap center">
+
+        <div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-left">
+
+                <div class="mask-group-wrapper">
+                    <br><br>
+                    <img class="mask-group-icon" alt="" src="~/ManagerProfile.jpg">
+
+                </div>
+                <br><br>
+                <div class="title">User</div>
+                <br><br>
+                <a href="#">
+                    <div class="task">SHOPPING CART</div>
+                </a>
+                <a href="#">
+                    <div class="task">COLLECTIONS</div>
+                </a>
+
+            </div>
+            <div class="col-right">
+                <form class="search" >
+                    <input type="search" placeholder="Search" aria-label="Search">
+                    <button type="submit">Search</button>
+                </form>
+                <div class="card-container">
+                 
+                <div class="card">
+                    <img class="card-image" alt="" src="image/portrait_uncanny.jpg">
+                    <div class="detail">
+                       <p>The Amazing Spider-Man (2022)</p> 
+                       <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <div class="button2">
+                        <div class="button-label">Details</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-image" alt="" src="image/portrait_uncanny.jpg">
+                    <div class="detail">
+                       <p>The Amazing Spider-Man (2022)</p> 
+                       <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <div class="button2">
+                        <div class="button-label">Details</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-image" alt="" src="image/portrait_uncanny.jpg">
+                    <div class="detail">
+                       <p>The Amazing Spider-Man (2022)</p> 
+                       <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <div class="button2">
+                        <div class="button-label">Details</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-image" alt="" src="image/portrait_uncanny.jpg">
+                    <div class="detail">
+                       <p>The Amazing Spider-Man (2022)</p> 
+                       <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <div class="button2">
+                        <div class="button-label">Details</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-image" alt="" src="image/portrait_uncanny.jpg">
+                    <div class="detail">
+                       <p>The Amazing Spider-Man (2022)</p> 
+                       <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <div class="button2">
+                        <div class="button-label">Details</div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Add admin-specific content here -->
+        </div>
+        </div>
+
+        <div id="comicsList"></div>
+
+
+
+
+
+
+
+    </section>
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-text">©2025 MARVEL</div>
+
+        </div>
+    </footer>
+
+    <!-- Logout Button Form -->
+</body>
+
+</html>

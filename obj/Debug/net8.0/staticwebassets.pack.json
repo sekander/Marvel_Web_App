@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\MarvelWebApp.bundle.scp.css"
     },
     {
+      "Id": "D:\\Humber College\\Marvel\\wwwroot\\ManagerProfile.jpg",
+      "PackagePath": "staticwebassets\\ManagerProfile.jpg"
+    },
+    {
       "Id": "D:\\Humber College\\Marvel\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

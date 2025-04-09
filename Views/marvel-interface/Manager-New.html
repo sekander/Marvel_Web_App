@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="site.css" />
+</head>
+
+<body>
+
+
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo.svg" alt="Logo" class="logo" />
+        </div>
+
+        <div class="navbar-links">
+            <div class="navbar-link active">HOME</div>
+            <div class="navbar-link">COMICS</div>
+        </div>
+        <div class="container">
+            @if (role == "Admin")
+            {
+            <p>ADMIN</p>
+
+            }
+            else if (role == "Manager")
+            {
+            <p>MANAGER</p>
+            }
+            <form method="post" action="/Admin/Logout" class="mt-3">
+
+                @Html.AntiForgeryToken() <!-- This token is required for security -->
+                <button type="submit">Logout
+                    <div class="arrow-icon">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    </div>
+                </button>
+
+        </div>
+        </form>
+        </div>
+    </nav>
+    <section class="wrap center">
+
+        <div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-left">
+
+                <div class="mask-group-wrapper">
+                    <br><br>
+                    <img class="mask-group-icon" alt="" src="~/ManagerProfile.jpg">
+
+                </div>
+                <br><br>
+                <div class="title">MANAGER</div>
+                <br><br>
+                <a href="#">
+                    <div class="task">SETTING</div>
+                </a>
+
+            </div>
+            <div class="col-right">
+
+                <h1>Create New Book </h1><br>
+
+                <a href="#"><div class="back">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <div class="button-label">Back</div>
+                </div><a href="">
+                <br>
+
+
+
+                <form action="POST">
+                    <label for="bookname">Book Name</label>
+                    <input type="text" id="bookname" name="bookname" required><br><br>
+                    <label for="publiblicationDate">Publication Date</label>
+                    <input type="date" id="publicationDate" name="publicationDate" required><br><br>
+                    <label for="coverArtist">Cover Artist</label>
+                    <input type="text" id="coverArtist" name="coverArtist" required><br><br>
+                    <label for="Price">Price</label>
+                    <input type="text" id="price" name="price" required><br><br>
+                    <label for="stock">Stock</label>
+                    <input type="number" id="stock" name="price" required><br><br>
+                    <label for="isbn">ISBN</label>
+                    <input type="text" id="isbn" name="isbn" required><br><br>
+                    <button type="submit" class="button">Create Book
+                        <i class="fas fa-book"></i>
+                    </button>
+
+                </form>
+  <!-- Add admin-specific content here -->
+            </div>
+        </div>
+
+        <div id="comicsList"></div>
+
+
+
+
+
+
+
+    </section>
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-text">©2025 MARVEL</div>
+
+        </div>
+    </footer>
+
+    <!-- Logout Button Form -->
+</body>
+
+</html>

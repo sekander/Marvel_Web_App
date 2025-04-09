@@ -1,49 +1,89 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 hr {
-color:#fff;
+    color: #fff;
 }
+
 a {
-color:#fff;
+    color: #fff;
+    text-decoration: none;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+p {
+    text-align: left;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-    padding:0px;
+    padding: 0px;
     margin-bottom: 60px;
-    background-color: #000!important;
-    
+    background-color: #000 !important;
 }
-h1, h2, h3, h4 {
-color:#FFF!important;
+
+h1,
+h2,
+h3,
+h4 {
+    color: #fff !important;
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-body {
-    font-family: 'Outfit', sans-serif;
-    color:#fff;
+h2 {
+    text-align: left;
 }
 
+body {
+    font-family: "Outfit", sans-serif;
+    color: #fff;
+}
+
+button {
+    gap: 8px;
+    display: flex;
+    padding: 12px 28px;
+    background-color: #ed1b24;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.hero-image {
+    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+    background-image: url("image/cover.jpg");
+    /* Set a specific height */
+    height: 50vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
 /* Navbar styles */
 .navbar {
     display: flex;
@@ -52,10 +92,11 @@ body {
     padding: 10px 60px;
     background-color: #333;
 }
- .navbar .container {
+
+    .navbar .container {
         display: flex;
-        align-items: center; 
-        gap: 10px; 
+        align-items: center;
+        gap: 10px;
     }
 
 /* Logo container */
@@ -90,18 +131,18 @@ body {
 }
 
     .navbar-link:hover {
-        color: #E90909;
+        color: #e90909;
     }
 
     .navbar-link.active {
-        color: #E90909;
+        color: #e90909;
     }
 
 .wrap {
     padding: 24px;
     max-width: 1440px;
-    width: 100%; 
-    margin: 60px auto; 
+    width: 100%;
+    margin: 60px auto;
 }
 
 /* Optional: You can add a hover effect to the "Sign In" button */
@@ -111,34 +152,33 @@ body {
 
 .col-left {
     flex: 20%;
-    border-right:solid 1px #fff;
-    margin:auto;
+    gap: 16px;
+    margin: auto;
 }
+
 .col-right {
+    border-left: solid 1px #fff;
     flex: 80%;
-    padding:20px;
+    padding: 20px;
 }
+
 .center {
-margin:auto;
+    margin: auto;
 }
 
 .signin-form {
     margin: auto;
     max-width: 800px;
 }
-button {
+
+.comic {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 12px 28px;
-    background-color: #ED1B24;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
-    font-size: 16px;
-    font-weight: 400;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-start;
+    gap: 36px;
 }
+
 .create-account {
     color: #ed1b24;
 }
@@ -150,8 +190,6 @@ button {
     text-align: left;
     color: #fff;
 }
-
-
 
 .arrow-icon {
     width: 16px;
@@ -167,7 +205,7 @@ button {
 /* Footer */
 
 .footer {
-    padding:24px;
+    padding: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -175,7 +213,7 @@ button {
 }
 
 .footer-container {
-    border-top:solid 1px #fff;
+    border-top: solid 1px #fff;
     display: flex;
     flex: 1 1 0;
     justify-content: center;
@@ -201,38 +239,37 @@ button {
 
 /* Style for form groups (label and input) */
 
-
-    label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: 600;
-        color: #fff;
-    }
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #fff;
+}
 
 input {
     background-color: #000;
     color: #fff;
 }
+
 input,
 textarea {
-        
-        width: 100%;
-        padding: 10px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        transition: border-color 0.3s ease;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
 }
 
-input:focus,
- textarea:focus {
-       border-color: #4CAF50;
-       outline: none;
- }
+    input:focus,
+    textarea:focus {
+        border-color: #4caf50;
+        outline: none;
+    }
 
 .form-group {
-    margin-bottom:40px;
+    margin-bottom: 40px;
 }
 
 .mask-group-icon {
@@ -262,27 +299,20 @@ input:focus,
 .task {
     position: relative;
     font-size: 26px;
-    color: #FFF;
+    color: #fff;
     text-align: left;
+    margin-bottom: 16px;
 }
 
 .text-row {
-    display: flex; 
-    flex-direction: row; 
-    gap: 8px; 
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
 }
 
-.link {
-    text-decoration:none;
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
-    box-sizing: border-box;
-    color: #dde1eb;
-}
+
 .text {
     padding: 8px;
- 
 }
 /* Styling for the table */
 .manager-table {
@@ -291,7 +321,7 @@ input:focus,
     margin: 20px 0;
     font-size: 16px;
     text-align: left;
-    word-wrap: break-word; 
+    word-wrap: break-word;
 }
 
     /* Table header */
@@ -331,6 +361,308 @@ input:focus,
         color: #333;
     }
 
+.back {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    font-size: 16px;
+    color: #ed1b24;
+    gap: 8px;
+}
+
+
+
+.published-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.info {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.frame-parent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+}
+/* .the-green-goblin {
+  width: 548px;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  flex-shrink: 0;
+} */
+/* Manager Viewform */
+.marvel-universe-ultimate-spide-parent {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 24px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+}
+
+.button-parent {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+    text-align: left;
+    font-size: 16px;
+    color: #fff;
+    font-family: Outfit;
+}
+
+.portrait-uncanny-icon {
+    width: 267px;
+    position: relative;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.portrait-uncanny-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.frame-child {
+    align-self: stretch;
+    height: 20.5px;
+}
+
+.book-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 36px;
+}
+
+.book-wrapper {
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.dollar-parent {
+    width: 100%;
+    margin-left: auto;
+    gap: 8px;
+    text-align: right;
+}
+
+.dollar {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.quantity {
+    position: relative;
+    line-height: 24px;
+}
+
+.div {
+    position: relative;
+    letter-spacing: 0.01em;
+}
+
+.parent {
+    width: 87.5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    font-size: 36px;
+}
+
+.input-field-blank {
+    flex: 1;
+    border: 1px solid #dde1eb;
+    box-sizing: border-box;
+    height: 41px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 27px;
+    gap: 0px;
+}
+
+.input-field-blank-wrapper {
+    align-self: stretch;
+    height: 41px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 13px;
+    font-family: Poppins;
+}
+
+.quantity-parent {
+    text-align: left;
+    align-self: stretch;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.button-label {
+    position: relative;
+}
+
+.button2 {
+    background-color: black;
+    border: 1.5px solid #ed1b24;
+    border-radius: 4px;
+    padding: 16px 28px;
+    color: #ed1b24;
+}
+
+.frame-div {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 24px;
+    font-size: 16px;
+}
+
+.comic-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+}
+
+.shoppingCartFrame {
+    flex: 1;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 36px;
+    text-align: left;
+    font-size: 32px;
+    color: #fff;
+}
+
+.pay {
+    margin-left: auto;
+}
+
+
+/* card */
+.card-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+}
+
+.card-image {
+    width: 100%;
+    position: relative;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+
+.detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+    .detail i {
+        width: 32px;
+    }
+
+.card {
+    position: relative;
+    width: 233px;
+    ;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 10px;
+    text-align: left;
+    font-size: 18px;
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+    .search input {
+        flex: 1; /* or give them fixed widths */
+    }
+
+
+/* charater card */
+
+.charaterName {
+    align-self: stretch;
+    background-color: #ed1b24;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px 6px;
+}
+
+.charactercard {
+    width: 160px;
+    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+    font-size: 20px;
+    color: #fff;
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .manager-table {
@@ -343,7 +675,9 @@ input:focus,
         }
 
         /* Make each row and cell behave like a block element */
-        .manager-table, .manager-table tr, .manager-table td {
+        .manager-table,
+        .manager-table tr,
+        .manager-table td {
             display: block;
             width: 100%; /* Ensure full-width on smaller screens */
         }
@@ -375,7 +709,8 @@ table.minimalistBlack {
     margin: 20px 0;
 }
 
-    table.minimalistBlack td, table.minimalistBlack th {
+    table.minimalistBlack td,
+    table.minimalistBlack th {
         border: 1px solid #ddd; /* Light gray border for better separation */
         padding: 8px 10px; /* Adjust padding for better readability */
     }
@@ -383,14 +718,14 @@ table.minimalistBlack {
     /* Styling for Table Body Cells */
     table.minimalistBlack tbody td {
         font-size: 13px; /* Slightly smaller text */
-        color: #333; /* Dark text for readability */
+        color: #ffffff; /* Dark text for readability */
     }
 
     /* Header Styling with Gradient */
     table.minimalistBlack thead {
         background: #818181;
         background: -moz-linear-gradient(top, #a0a0a0 0%, #8d8d8d 66%, #818181 100%);
-        background: -webkit-linear-gradient(top, #a0a0a0 0%, #8d8d8d 66%, #818181 100%);
+        background: -webkit-linear-gradient( top, #a0a0a0 0%, #8d8d8d 66%, #818181 100% );
         background: linear-gradient(to bottom, #a0a0a0 0%, #8d8d8d 66%, #818181 100%);
     }
 
@@ -398,7 +733,7 @@ table.minimalistBlack {
         table.minimalistBlack thead th {
             font-size: 16px;
             font-weight: bold;
-            color: #FFFFFF;
+            color: #ffffff;
             text-align: left;
             padding: 12px 15px; /* Larger padding for header */
         }
@@ -416,12 +751,16 @@ table.minimalistBlack {
         font-size: 14px; /* Adjust font size for smaller screens */
     }
 
-        table.minimalistBlack td, table.minimalistBlack th {
+        table.minimalistBlack td,
+        table.minimalistBlack th {
             padding: 6px 8px; /* Adjust padding for smaller screens */
         }
 
         /* Stack table rows vertically for smaller screens */
-        table.minimalistBlack, table.minimalistBlack tbody, table.minimalistBlack tr, table.minimalistBlack td {
+        table.minimalistBlack,
+        table.minimalistBlack tbody,
+        table.minimalistBlack tr,
+        table.minimalistBlack td {
             display: block;
             width: 100%;
         }
@@ -444,3 +783,4 @@ table.minimalistBlack {
             table.minimalistBlack thead {
                 display: none;
             }
+}

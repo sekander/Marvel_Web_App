@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\Humber College\\Marvel\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|d:\\humber college\\marvel\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|d:\\humber college\\marvel\\wwwroot\\logo.svg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|solutionrelative:wwwroot\\logo.svg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|d:\\humber college\\marvel\\views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|solutionrelative:views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -30,23 +38,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "logo.svg",
+              "DocumentMoniker": "D:\\Humber College\\Marvel\\wwwroot\\logo.svg",
+              "RelativeDocumentMoniker": "wwwroot\\logo.svg",
+              "ToolTip": "D:\\Humber College\\Marvel\\wwwroot\\logo.svg",
+              "RelativeToolTip": "wwwroot\\logo.svg",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAP8SURBVDhPrZRdbJNVGMd/p33b9Qtqt9HZbe2woKxsbGDYpk5DQAkTFcQPjJgY44XGEI3GmBBMNNmVNxoWojei8VITgyzGCwgRyRjJZM5JlvERt0C3dVu3rt3bD7r3bc/xYt0o4CX/5Mn5/uc85/zOgfsppZS4u6\u002Bnp\u002BdYc3PzB6VxlFIrcwGQUpLP58lms71Hjhw5PDExEbvT4S719PSMSillsVj83ygUCnJ4eFgODg7K48eP/xyJRDaVr7eWNwC6uroOd3R0VEsFBSOFzF1GZL7DmP0Rc/o3AP6dNNne1oHT6Qzb7fb6qampy4lEInGPob39NdHY2n74aq6i\u002BvpUP2sL3\u002BCc/ZZC7AyITUgVpBC/yMQcNDzSjs/n01wu18bKysrglStXLqTT6fSyoRC4H93nCz33zudrAqFn2iI2\u002B66aY3hnTjM8vpVf9A8ZqzjElta9yLlRMqabC0M3GBoaQtd1q8/ni5w/f/6nVCoV0wAczXu8Dfvf/\u002BTp7fXvvrxlzLVdfkriWo7\u002B7FGuh19kwnBycWyGrHmDV/xNNLZuoB4/hmHg8XgYGRlZzdIC4O96r7Mjsu6Ng00Da9tyH4vF4TxTopvcugPYsuA2C4TW13Jprkhf8iHEmhDV1VUEAgG8Xi9Wq3WVAgtAQ8Bz4IXG0aoW8ysxP2jiavmBLY8d4OC2AK\u002B3VJOZnsNnr0C4nQwmbMznLaX9KChDC0AD2Lwu9dTj3u\u002BdmXEHX5ufMfmHDbPwD1IpFJJ8UaNKs2Cz2xifWyKZNqhd60ApQNxmFECrDWj2t1pO19uiY\u002BKc5QvlbtstwsrC8mxKpgrzloFhmCwVChSUKg0r1F0PQJu8GtqfHP\u002B1YiDzthoN7in\u002BefGadWuNSygpUUohlQIUQirqkLQGPfg99pLZna8IQFN67NXZm3VL54o7MbNKczttls5wtdhW58br0NDzJgM3kkSTOVCKoM\u002BFx6GtJLB8jmXS8pP5zmS24vf\u002BGW1zSEs11ITrxJnpHGeuz6IME82uUfRUkSy6WIgv8KxFYLPc/gJWUl6RpbAonHuPLh2Kzcx/eW10PHFzOq0M9xoIrUdsfJilugbiShCPJwg7CjzfXIPdunLL98p69E38Ox5Mhi/1X\u002B1rCNjMTMps1DPSPRlfJDGf4lZiAVt6kaYHND7auYFKtx2EWEVGCEE0GuXUqVMndF2PWdfXMhCbYVfEPrujLt43Eqhvde1\u002B4slGv63IJq9Ge62bfU1\u002BXtpai8OmLW\u002BjhAuAsFiIRifo7e09oev6vV9Zd3d3n5RSmqZZCkOaxnIYq7G0WpqmKc\u002BePSuDwWAbK2CXSyn118mTJztL9WV0SgiV95Wzp\u002Bv638DCnU73Sf8B3E0j/55GTsEAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-04-07T12:53:04.937Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "D:\\Humber College\\Marvel\\Views\\Admin\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\Dashboard.cshtml",
+              "ToolTip": "D:\\Humber College\\Marvel\\Views\\Admin\\Dashboard.cshtml",
+              "RelativeToolTip": "Views\\Admin\\Dashboard.cshtml",
+              "ViewState": "AgIAAF4BAAAAAAAAAAAAAHABAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-07T12:47:42.85Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\Humber College\\Marvel\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
+              "ToolTip": "D:\\Humber College\\Marvel\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAMDAAAAAAAAAAAAwBIDAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-07T12:37:51.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "site.js",
               "DocumentMoniker": "D:\\Humber College\\Marvel\\wwwroot\\js\\site.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
               "ToolTip": "D:\\Humber College\\Marvel\\wwwroot\\js\\site.js",
               "RelativeToolTip": "wwwroot\\js\\site.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAAA0AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-03-28T00:49:30.386Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "footer.cshtml",
               "DocumentMoniker": "D:\\Humber College\\Marvel\\Views\\Reusable\\footer.cshtml",
               "RelativeDocumentMoniker": "Views\\Reusable\\footer.cshtml",
@@ -58,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "nav.cshtml",
               "DocumentMoniker": "D:\\Humber College\\Marvel\\Views\\Reusable\\nav.cshtml",
               "RelativeDocumentMoniker": "Views\\Reusable\\nav.cshtml",
@@ -70,28 +115,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Login.cshtml",
               "DocumentMoniker": "D:\\Humber College\\Marvel\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "Views\\Account\\Login.cshtml",
               "ToolTip": "D:\\Humber College\\Marvel\\Views\\Account\\Login.cshtml",
               "RelativeToolTip": "Views\\Account\\Login.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAD4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-03-28T00:25:24.276Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Dashboard.cshtml",
-              "DocumentMoniker": "D:\\Humber College\\Marvel\\Views\\Admin\\Dashboard.cshtml",
-              "RelativeDocumentMoniker": "Views\\Admin\\Dashboard.cshtml",
-              "ToolTip": "D:\\Humber College\\Marvel\\Views\\Admin\\Dashboard.cshtml",
-              "RelativeToolTip": "Views\\Admin\\Dashboard.cshtml",
-              "ViewState": "AgIAAGoAAAAAAAAAAAAQwJQAAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-27T02:49:01.208Z",
-              "EditorCaption": ""
             }
           ]
         }

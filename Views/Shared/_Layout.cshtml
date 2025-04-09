@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - OnlineStore</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/OnlineStore.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/lightbox2/lightboxmin.css" asp-append-version="true" />
+    <script src="https://cdn.tiny.cloud/1/KEY_GOES_HERE/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    @{
+        ViewData["Title"] = "Dashboard";
+        var role = User.IsInRole("Admin") ? "Admin" :
+        User.IsInRole("Manager") ? "Manager" :
+        "User";
+    }
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+    <header>
+       <nav class="navbar">
+    <div class="logo-container">
+        <img src="~/logo.svg" alt="Logo" class="logo" />
+    </div>
+
+    <div class="navbar-links">
+        <div class="navbar-link active">HOME</div>
+        <div class="navbar-link">COMICS</div>
+    </div>
+    @* <div class="container">
+        @if (role == "Admin")
+        {
+            <p>ADMIN</p>
+
+        }
+        else if (role == "Manager")
+        {
+            <p>MANAGER</p>
+        }
+        <form method="post" action="/Admin/Logout" class="mt-3">
+
+            @Html.AntiForgeryToken() <!-- This token is required for security -->
+            <button type="submit" class="btn btn-danger">Logout
+                <div class="arrow-icon">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                </div>
+            </button>
+
+    </div> *@
+    </form>
+    </div>
+</nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-text">©2025 MARVEL</div>
+
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @*
+        /* Scripts to add */
+    *@
+    <script src="~/js/lightbox2/lightbox.js"></script>
+    <script>
+        //rich text WYSIWYG editor
+        //documentation: https://www.tiny.cloud/docs/quick-start/
+        tinymce.init({
+            selector: 'textarea.mce'
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

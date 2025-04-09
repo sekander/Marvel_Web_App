@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="site.css" />
+</head>
+
+<body>
+
+
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo.svg" alt="Logo" class="logo" />
+        </div>
+
+        <div class="navbar-links">
+            <div class="navbar-link active">HOME</div>
+            <div class="navbar-link">COMICS</div>
+        </div>
+        <div class="container">
+           
+            <form method="post" action="/Admin/Logout" class="mt-3">
+
+                
+                <button type="submit">Logout
+                    <div class="arrow-icon">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    </div>
+                </button>
+
+        </div>
+        </form>
+        </div>
+    </nav>
+    <section class="wrap center">
+
+        <div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-left">
+
+                <div class="mask-group-wrapper">
+                    <br><br>
+                    <img class="mask-group-icon" alt="" src="~/ManagerProfile.jpg">
+
+                </div>
+                <br><br>
+                <div class="title">User</div>
+                <br><br>
+                <a href="#">
+                    <div class="task">SHOPPING CART</div>
+                </a>
+                <a href="#">
+                    <div class="task">COLLECTIONS</div>
+                </a>
+
+            </div>
+            <div class="col-right">
+
+                <h1>Shopping Cart</h1> <br>
+                <div class="back">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <div class="button-label">Back</div>
+                </div>
+                <br>
+
+                <div class="book-wrapper">
+                    <div class="book-container">
+
+                        <div class="portrait-uncanny-wrapper">
+                            <img alt="" src="\image\portrait_uncanny.jpg">
+                        </div>
+
+                    </div>
+                    <div class="book-container">
+                        <div class="marvel-universe-ultimate-spide-parent">
+                            <b class="marvel-universe-ultimate">Marvel Universe Ultimate Spider-Man: Spider-Verse (2018)
+                                #5</b>
+                            <div class="the-green-goblin">The Green Goblin is on a Spider-DNA-stealing rampage through
+                                multiple
+                                dimensions…this time running afoul of the Medieval Age’s Spyder-Knight!</div>
+                            <p class="dollar-parent"><span class="dollar">$12.99</span> CAD</p>
+                            <form class="quantity-parent">
+                                <div>
+                                    <label for="quantity">Quantity</label>
+                                    <input type="number" id="quantity" name="quantity">
+                                </div>
+                                <button type="submit">Delete</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-wrapper">
+                    <div class="book-container">
+
+                        <div class="portrait-uncanny-wrapper">
+                            <img alt="" src="\image\portrait_uncanny.jpg">
+                        </div>
+
+                    </div>
+                    <div class="book-container">
+                        <div class="marvel-universe-ultimate-spide-parent">
+                            <b class="marvel-universe-ultimate">Marvel Universe Ultimate Spider-Man: Spider-Verse (2018)
+                                #5</b>
+                            <div class="the-green-goblin">The Green Goblin is on a Spider-DNA-stealing rampage through
+                                multiple
+                                dimensions…this time running afoul of the Medieval Age’s Spyder-Knight!</div>
+                            <p class="dollar-parent"><span class="dollar">$12.99</span> CAD</p>
+                            <form class="quantity-parent">
+                                <div>
+                                    <label for="quantity">Quantity</label>
+                                    <input type="number" id="quantity" name="quantity">
+                                </div>
+                                <button type="submit">Delete</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+               
+                    <p class="dollar-parent">TOTAL <span class="dollar">$25.98</span> CAD</p>
+                    <button class="pay">Pay</button>
+                
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Add admin-specific content here -->
+        </div>
+        </div>
+
+        <div id="comicsList"></div>
+
+
+
+
+
+
+
+    </section>
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-text">©2025 MARVEL</div>
+
+        </div>
+    </footer>
+
+    <!-- Logout Button Form -->
+</body>
+
+</html>
