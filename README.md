@@ -1,3 +1,27 @@
+# Marvel Web Application
+
+## Project Overview
+This is a Marvel-themed e-commerce web application built with ASP.NET Core MVC. The application serves as a digital comic book store with Marvel-themed content, featuring inventory management, user accounts, and purchasing capabilities.
+
+### Core Features
+- Role-based authentication (Admin, Manager, User)
+- Comic book inventory management
+- Shopping cart and order processing
+- Character and comic catalog
+
+### Technical Stack
+- ASP.NET Core MVC
+- MySQL database
+- Entity Framework Core
+- Bootstrap for UI
+
+### Key Functionality
+- Managers can view and add comics to inventory
+- Users can browse and purchase comics
+- Admins have full system control
+- Secure authentication and authorization
+- Responsive design for all devices
+
 Here's a summary of everything you've done so far with your C# ASP.NET Core project:
 1. Project Setup
 
@@ -55,4 +79,4 @@ Summary of Next Steps:
 
     Verify the login functionality by testing different users with different roles.
     Ensure that the database is properly seeded with roles and users.
-    Add further views and functionality specific to Admin, Manager, and User dashboards as per the project’s requirements.
+    Add further views and functionality specific to Admin, Manager, and User dashboards as per the project's requirements.

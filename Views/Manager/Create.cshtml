@@ -1,32 +1,32 @@
 @model MarvelWebApp.Models.Comic
 
-
-@{   
-  ViewData["Title"] = "Add New Comic";
+@{
+    ViewData["Title"] = "Add New Comic";
 }
 
 <div class="container mt-4">
     <h2>@ViewData["Title"]</h2>
 
-    <form method="post">
-        
+    <form method="post" action="/Manager/Create">
+        @Html.AntiForgeryToken()
+
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group mb-3">
                     <label asp-for="Title" class="control-label">Title</label>
-                    <input asp-for="Title" class="form-control"    />
+                    <input asp-for="Title" class="form-control" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
 
                 <div class="form-group mb-3">
                     <label asp-for="Series" class="control-label">Series</label>
-                    <input asp-for="Series" class="form-control"  />
+                    <input asp-for="Series" class="form-control" />
                     <span asp-validation-for="Series" class="text-danger"></span>
                 </div>
 
                 <div class="form-group mb-3">
-                    <label asp-for="IssueNumber" class="control-label">IssueNumber</label>
-                    <input asp-for="IssueNumber" class="form-control"  />
+                    <label asp-for="IssueNumber" class="control-label">Issue Number</label>
+                    <input asp-for="IssueNumber" class="form-control" />
                     <span asp-validation-for="IssueNumber" class="text-danger"></span>
                 </div>
 
@@ -40,18 +40,18 @@
             <div class="col-md-6">
                 <div class="form-group mb-3">
                     <label asp-for="Price" class="control-label">Price</label>
-                    <input asp-for="Price" class="form-control"/>
+                    <input asp-for="Price" class="form-control" type="number" step="0.01" />
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
 
                 <div class="form-group mb-3">
                     <label asp-for="Quantity" class="control-label">Quantity</label>
-                    <input asp-for="Quantity" class="form-control"  />
+                    <input asp-for="Quantity" class="form-control" type="number" />
                     <span asp-validation-for="Quantity" class="text-danger"></span>
                 </div>
 
                 <div class="form-group mb-3">
-                    <label asp-for="ReleaseDate" class="control-label">ReleaseDate</label>
+                    <label asp-for="ReleaseDate" class="control-label">Release Date</label>
                     <input asp-for="ReleaseDate" class="form-control" type="date" />
                     <span asp-validation-for="ReleaseDate" class="text-danger"></span>
                 </div>
@@ -72,13 +72,13 @@
 
         <div class="form-group mt-4">
             <button type="submit" class="btn btn-primary">Add Comic</button>
-            <a href="@Url.Action("Dashboard", "Manager")" class="btn btn-success">Back tbody Dashboard</a>
+            <a href="/Manager/Dashboard" class="btn btn-secondary">Back to Dashboard</a>
         </div>
     </form>
 </div>
 
 @section Scripts {
-  @{
-    await Html.RenderPartialAsync("_ValidationScriptsPartial");
-  }
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
