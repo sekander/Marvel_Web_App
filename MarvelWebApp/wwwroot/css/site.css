@@ -153,17 +153,18 @@ margin:auto;
 /* Optional: You can add a hover effect to the "Sign In" button */
 .row {
     display: flex;
+    gap: 16px; /* Moved gap here */
 }
 
 .col-left {
-    flex: 20%;
-    gap: 16px;
-    margin: auto;
+    flex: 0 0 20%; /* fixed flex shorthand */
+    margin: auto 0; /* vertically center if height allows */
 }
 
 .col-right {
     border-left: solid 1px #fff;
-    flex: 80%;
+    flex: 1; /* take remaining space */
+    gap:8px;
     padding: 20px;
 }
 
@@ -273,9 +274,7 @@ textarea {
         outline: none;
     }
 
-.form-group {
-    margin-bottom: 40px;
-}
+
 
 .mask-group-icon {
     width: 108px;
