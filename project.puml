@@ -1,0 +1,83 @@
+@startuml
+
+' Define Entities
+entity User {
+    + UserID : int
+    --
+    Name : string
+    Email : string
+    Password : string
+    Role : string
+}
+
+entity ShoppingCart {
+    + CartID : int
+    --
+    UserID : int
+}
+
+entity Order {
+    + OrderID : int
+    --
+    UserID : int
+    TotalAmount : float
+    OrderDate : datetime
+    PaymentID : int
+}
+
+entity Payment {
+    + PaymentID : int
+    --
+    OrderID : int
+    PaymentMethod : string
+    PaymentStatus : string
+    PaymentDate : datetime
+}
+
+entity OrderItem {
+    + OrderItemID : int
+    --
+    OrderID : int
+    ComicID : int
+    Quantity : int
+    Price : float
+}
+
+entity Comic {
+    + ComicID : int
+    --
+    Title : string
+    Price : float
+    CategoryID : int
+    Stock : int
+}
+
+entity Category {
+    + CategoryID : int
+    --
+    Name : string
+}
+
+entity ShoppingCartItem {
+    + CartItemID : int
+    --
+    CartID : int
+    ComicID : int
+    Quantity : int
+}
+
+' Define Relationships (Grid-like arrangement)
+
+' One-to-Many Relationships
+User       ||--|{ Order          : places (1-to-many)
+User       ||--|| ShoppingCart   : owns (1-to-1)
+Order      ||--|{ OrderItem      : contains (1-to-many)
+OrderItem  }|--|| Comic          : references (many-to-1)
+Comic      }|--|| Category       : belongs_to (many-to-1)
+Category   ||--|{ Comic          : contains (1-to-many)
+ShoppingCart ||--|{ ShoppingCartItem : includes (1-to-many)
+ShoppingCartItem }|--|| Comic    : references (many-to-1)
+Payment    ||--|| Order          : for (1-to-1)
+
+@enduml
+

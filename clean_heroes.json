@@ -1,0 +1,1085 @@
+[
+  {
+    "name": "Silver Sable",
+    "id": "1009588"
+  },
+  {
+    "name": "Changeling",
+    "id": "1009231"
+  },
+
+      {
+    "name": "Blackheart",
+    "id": "1009189"
+  },
+  {
+    "name": "Deathlok",
+    "id": "1009271"
+  },
+  {
+    "name": "Darkhawk",
+    "id": "1009269"
+  },
+  {
+    "name": "Firelord",
+    "id": "1009302"
+  },
+  {
+    "name": "Black Tarantula",
+    "id": "1009186"
+  },
+  {
+    "name": "Jackal",
+    "id": "1009387"
+  },
+  {
+    "name": "Toxin",
+    "id": "1010780"
+  },
+  {
+    "name": "Vermin",
+    "id": "1010360"
+  },
+  {
+    "name": "Morlun",
+    "id": "1011147"
+  },
+  {
+    "name": "Chameleon",
+    "id": "1009227"
+  },
+  {
+    "name": "Calypso",
+    "id": "1009224"
+  },
+  {
+    "name": "Stegron",
+    "id": "1010732"
+  },
+  {
+    "name": "Overdrive",
+    "id": "1011278"
+  },
+  {
+    "name": "Big Wheel",
+    "id": "1010808"
+  },
+  {
+    "name": "Swarm",
+    "id": "1010822"
+  },
+  {
+    "name": "Demogoblin",
+    "id": "1009275"
+  },
+  {
+    "name": "Jack O'Lantern",
+    "id": "1009386"
+  },
+  {
+    "name": "Shocker",
+    "id": "1009576"
+  },
+  {
+    "name": "Cardiac",
+    "id": "1009229"
+  },
+  {
+    "name": "Molten Man",
+    "id": "1009451"
+  },
+  {
+    "name": "Smythe",
+    "id": "1010804"
+  },
+  {
+    "name": "Stingray",
+    "id": "1010807"
+  },
+  {
+    "name": "Union Jack",
+    "id": "1011131"
+  },
+  {
+    "name": "Taskmaster",
+    "id": "1009664"
+  },
+  {
+    "name": "Red Guardian",
+    "id": "1009547"
+  },
+  {
+    "name": "Baron Blood",
+    "id": "1009174"
+  },
+  {
+    "name": "Baron Zemo",
+    "id": "1009175"
+  },
+  {
+    "name": "Moonstone",
+    "id": "1009453"
+  },
+  {
+    "name": "Doctor Druid",
+    "id": "1009279"
+  },
+  {
+    "name": "Black Knight",
+    "id": "1009184"
+  },
+  {
+    "name": "Whizzer",
+    "id": "1010370"
+  },
+  {
+    "name": "Red Wolf",
+    "id": "1010719"
+  },
+  {
+    "name": "Living Lightning",
+    "id": "1010800"
+  },
+  {
+    "name": "Monica Rambeau",
+    "id": "1010698"
+  },
+  {
+    "name": "Captain Britain",
+    "id": "1009220"
+  },
+  {
+    "name": "Pete Wisdom",
+    "id": "1010864"
+  },
+  {
+    "name": "Merlyn",
+    "id": "1011168"
+  },
+  {
+    "name": "Widget",
+    "id": "1011082"
+  },
+  {
+    "name": "Meggan",
+    "id": "1011083"
+  },
+  {
+    "name": "Kylun",
+    "id": "1011080"
+  },
+  {
+    "name": "Gatecrasher",
+    "id": "1010774"
+  },
+  {
+    "name": "Warlock",
+    "id": "1009707"
+  },
+  {
+    "name": "Wolfsbane",
+    "id": "1009724"
+  },
+  {
+    "name": "Cloak",
+    "id": "1009239"
+  },
+  {
+    "name": "Dagger",
+    "id": "1009262"
+  },
+  {
+    "name": "Shang-Chi",
+    "id": "1009577"
+  },
+  {
+    "name": "Man-Thing",
+    "id": "1009420"
+  },
+  {
+    "name": "Howard the Duck",
+    "id": "1010375"
+  },
+  {
+    "name": "It the Living Colossus",
+    "id": "1011381"
+  },
+  {
+    "name": "Machine Man",
+    "id": "1010801"
+  },
+  {
+    "name": "ROM",
+    "id": "1010725"
+  },
+  {
+    "name": "Devil Dinosaur",
+    "id": "1009276"
+  },
+  {
+    "name": "Moon-Boy",
+    "id": "1010750"
+  },
+  {
+    "name": "Elsa Bloodstone",
+    "id": "1010682"
+  },
+  {
+    "name": "Manphibian",
+    "id": "1010847"
+  },
+  {
+    "name": "Simon Garth (Zombie)",
+    "id": "1010820"
+  },
+  {
+    "name": "Gargoyle",
+    "id": "1009313"
+  },
+  {
+    "name": "D'Spayre",
+    "id": "1009267"
+  },
+  {
+    "name": "Morgan Le Fay",
+    "id": "1009469"
+  },
+  {
+    "name": "Selene",
+    "id": "1009585"
+  },
+  {
+    "name": "Spitfire",
+    "id": "1010806"
+  },
+  {
+    "name": "Firebird",
+    "id": "1009300"
+  },
+  {
+    "name": "Doctor Nemesis",
+    "id": "1010726"
+  },
+  {
+    "name": "Empath",
+    "id": "1009287"
+  },
+  {
+    "name": "Lilandra",
+    "id": "1010739"
+  },
+  {
+    "name": "Gladiator",
+    "id": "1009316"
+  },
+  {
+    "name": "Deathbird",
+    "id": "1009268"
+  },
+  {
+    "name": "Warstar",
+    "id": "1010754"
+  },
+  {
+    "name": "Ch'od",
+    "id": "1009228"
+  },
+  {
+    "name": "Raza",
+    "id": "1010718"
+  },
+  {
+    "name": "Hepzibah",
+    "id": "1009331"
+  },
+  {
+    "name": "Corsair",
+    "id": "1009253"
+  },
+  {
+    "name": "Sunder",
+    "id": "1010756"
+  },
+  {
+    "name": "Callisto",
+    "id": "1009223"
+  },
+  {
+    "name": "Marrow",
+    "id": "1009422"
+  },
+  {
+    "name": "Leech",
+    "id": "1010757"
+  },
+  {
+    "name": "Artie Maddicks",
+    "id": "1010759"
+  },
+  {
+    "name": "Random",
+    "id": "1010717"
+  },
+  {
+    "name": "Phantazia",
+    "id": "1010716"
+  },
+  {
+    "name": "Spyke",
+    "id": "1010838"
+  },
+  {
+    "name": "Mimic",
+    "id": "1009443"
+  },
+
+  {
+    "name": "Galactus",
+    "id": "1009312"
+  },
+  {
+    "name": "Beta Ray Bill",
+    "id": "1009199"
+  },
+  {
+    "name": "Angela",
+    "id": "1011136"
+  },
+  {
+    "name": "Magik",
+    "id": "1009410"
+  },
+  {
+    "name": "Havok",
+    "id": "1009337"
+  },
+  {
+    "name": "Cannonball",
+    "id": "1009226"
+  },
+  {
+    "name": "Forge",
+    "id": "1009304"
+  },
+  {
+    "name": "Strong Guy",
+    "id": "1009638"
+  },
+  {
+    "name": "Warpath",
+    "id": "1009709"
+  },
+  {
+    "name": "Sunspot",
+    "id": "1009637"
+  },
+  {
+    "name": "Domino",
+    "id": "1009280"
+  },
+  {
+    "name": "Bishop",
+    "id": "1009187"
+  },
+  {
+    "name": "Daken",
+    "id": "1010673"
+  },
+  {
+    "name": "X-23",
+    "id": "1009722"
+  },
+  {
+    "name": "Shatterstar",
+    "id": "1009572"
+  },
+  {
+    "name": "Rachel Summers",
+    "id": "1009511"
+  },
+  {
+    "name": "Captain Universe",
+    "id": "1010767"
+  },
+  {
+    "name": "Spider-Woman",
+    "id": "1009609"
+  },
+  {
+    "name": "Iron Fist",
+    "id": "1009365"
+  },
+  {
+    "name": "Mockingbird",
+    "id": "1009457"
+  },
+  {
+    "name": "Songbird",
+    "id": "1010803"
+  },
+  {
+    "name": "Boomerang",
+    "id": "1009194"
+  },
+  {
+    "name": "Rhino",
+    "id": "1009537"
+  },
+  {
+    "name": "Sandman",
+    "id": "1009560"
+  },
+  {
+    "name": "Tombstone",
+    "id": "1009677"
+  },
+  {
+    "name": "Man-Wolf",
+    "id": "1009421"
+  },
+  {
+    "name": "Scorpion",
+    "id": "1009566"
+  },
+  {
+    "name": "Hydro-Man",
+    "id": "1011010"
+  },
+  {
+    "name": "Madame Web",
+    "id": "1010998"
+  },
+  {
+    "name": "Kraven the Hunter",
+    "id": "1009399"
+  },
+  {
+    "name": "Morbius",
+    "id": "1009466"
+  },
+  {
+    "name": "Silver Samurai",
+    "id": "1009591"
+  },
+  {
+    "name": "Firestar",
+    "id": "1009299"
+  },
+  {
+    "name": "Squirrel Girl",
+    "id": "1010860"
+  },
+  {
+    "name": "Hellcat",
+    "id": "1009332"
+  },
+  {
+    "name": "Star-Lord",
+    "id": "1010733"
+  },
+  {
+    "name": "Yondu",
+    "id": "1010775"
+  },
+  {
+    "name": "Corsair",
+    "id": "1009253"
+  },
+  {
+    "name": "Namor",
+    "id": "1009468"
+  },
+  {
+    "name": "Ares",
+    "id": "1010783"
+  },
+  {
+    "name": "Hercules",
+    "id": "1009332"
+  },
+  {
+    "name": "Hyperion",
+    "id": "1011313"
+  },
+  {
+    "name": "Northstar",
+    "id": "1009479"
+  },
+  {
+    "name": "Aurora",
+    "id": "1009159"
+  },
+  {
+    "name": "Puck",
+    "id": "1009519"
+  },
+  {
+    "name": "Vindicator",
+    "id": "1009705"
+  },
+  {
+    "name": "Snowbird",
+    "id": "1010671"
+  },
+  {
+    "name": "Sasquatch",
+    "id": "1010675"
+  },
+  {
+    "name": "Omega Red",
+    "id": "1009471"
+  },
+  {
+    "name": "Maverick",
+    "id": "1009426"
+  },
+  {
+    "name": "Banshee",
+    "id": "1009172"
+  },
+  {
+    "name": "Mojo",
+    "id": "1009450"
+  },
+  {
+    "name": "Spiral",
+    "id": "1009616"
+  },
+  {
+    "name": "Pyro",
+    "id": "1009517"
+  },
+  {
+    "name": "Avalanche",
+    "id": "1009157"
+  },
+  {
+    "name": "Mastermind",
+    "id": "1009425"
+  },
+  {
+    "name": "Legion",
+    "id": "1010711"
+  },
+  {
+    "name": "The Hood",
+    "id": "1010729"
+  },
+  {
+    "name": "Tigra",
+    "id": "1009675"
+  },
+  {
+    "name": "Whirlwind",
+    "id": "1009720"
+  },
+  {
+    "name": "Boom Boom",
+    "id": "1009195"
+  },
+  {
+    "name": "Misty Knight",
+    "id": "1009461"
+  },
+  {
+    "name": "Colleen Wing",
+    "id": "1010355"
+  },
+  {
+    "name": "Magma",
+    "id": "1009406"
+  },
+  {
+    "name": "Karnak",
+    "id": "1009394"
+  },
+  {
+    "name": "Gorgon",
+    "id": "1009315"
+  },
+  {
+    "name": "Triton",
+    "id": "1009682"
+  },
+  {
+    "name": "Maximus",
+    "id": "1009428"
+  },
+  {
+    "name": "Medusa",
+    "id": "1009430"
+  },
+  {
+    "name": "Lockjaw",
+    "id": "1009406"
+  },
+  {
+    "name": "Ka-Zar",
+    "id": "1009392"
+  },
+  {
+    "name": "Zabu",
+    "id": "1009741"
+  },
+  {
+    "name": "Shanna the She-Devil",
+    "id": "1010817"
+  },
+  {
+    "name": "The Collector",
+    "id": "1009255"
+  },
+  {
+    "name": "Grandmaster",
+    "id": "1010788"
+  },
+  {
+    "name": "Uatu the Watcher",
+    "id": "1011280"
+  },
+  {
+    "name": "Ego the Living Planet",
+    "id": "1009286"
+  },
+  {
+    "name": "The Beyonder",
+    "id": "1011204"
+  },
+  {
+    "name": "The Living Tribunal",
+    "id": "1010856"
+  },
+  {
+    "name": "Eternity",
+    "id": "1010779"
+  },
+  {
+    "name": "Spider-Man",
+    "id": "1009610"
+  },
+  {
+    "name": "Cable",
+    "id": "1009214"
+  },
+  {
+    "name": "Beast",
+    "id": "1009175"
+  },
+  {
+    "name": "Toad",
+    "id": "1009673"
+  },
+  {
+    "name": "Juggernaut",
+    "id": "1009382"
+  },
+  {
+    "name": "Thing",
+    "id": "1009662"
+  },
+  {
+    "name": "Carnage",
+    "id": "1009227"
+  },
+  {
+    "name": "The Shocker",
+    "id": "1009715"
+  },
+  {
+    "name": "Valkyrie",
+    "id": "1009701"
+  },
+  {
+    "name": "She-Hulk",
+    "id": "1009488"
+  },
+  {
+    "name": "Vulture",
+    "id": "1009663"
+  },
+  {
+    "name": "Kang the Conqueror",
+    "id": "1009597"
+  },
+  {
+    "name": "Black Knight",
+    "id": "1009224"
+  },
+  {
+    "name": "Captian Marvel",
+    "id": "1010338"
+  },
+  {
+    "name": "Captain Britain",
+    "id": "1009223"
+  },
+  {
+    "name": "Psylocke",
+    "id": "1009512"
+  },
+  {
+    "name": "Echo",
+    "id": "1010785"
+  },
+  {
+    "name": "Wiccan",
+    "id": "1009714"
+  },
+  {
+    "name": "Speed",
+    "id": "1010833"
+  },
+  {
+    "name": "Lady Deathstrike",
+    "id": "1009393"
+  },
+  {
+    "name": "Taskmaster",
+    "id": "1009648"
+  },
+  {
+    "name": "Mister Sinister",
+    "id": "1009447"
+  },
+  {
+    "name": "Black Cat",
+    "id": "1009185"
+  },
+  {
+    "name": "Scarlet Witch",
+    "id": "1009562"
+  },
+  {
+    "name": "Vision",
+    "id": "1009697"
+  },
+  {
+    "name": "Daredevil",
+    "id": "1009262"
+  },
+  {
+    "name": "Iron Man",
+    "id": "1009368"
+  },
+  {
+    "name": "Captain America",
+    "id": "1009220"
+  },
+  {
+    "name": "Thor",
+    "id": "1009664"
+  },
+  {
+    "name": "Hulk",
+    "id": "1009351"
+  },
+  {
+    "name": "Black Widow",
+    "id": "1009189"
+  },
+  {
+    "name": "Doctor Strange",
+    "id": "1009282"
+  },
+  {
+    "name": "Black Panther",
+    "id": "1009187"
+  },
+  {
+    "name": "Wolverine",
+    "id": "1009718"
+  },
+  {
+    "name": "Deadpool",
+    "id": "1009268"
+  },
+  {
+    "name": "Iron Man",
+    "id": "1009368"
+  },
+  {
+    "name": "Captain America",
+    "id": "1009220"
+  },
+  {
+    "name": "Thor",
+    "id": "1009664"
+  },
+  {
+    "name": "Hulk",
+    "id": "1009351"
+  },
+  {
+    "name": "Black Widow",
+    "id": "1009189"
+  },
+  {
+    "name": "Doctor Strange",
+    "id": "1009282"
+  },
+  {
+    "name": "Black Panther",
+    "id": "1009187"
+  },
+  {
+    "name": "Wolverine",
+    "id": "1009718"
+  },
+  {
+    "name": "Deadpool",
+    "id": "1009268"
+  },
+  {
+    "name": "Scarlet Witch",
+    "id": "1009562"
+  },
+  {
+    "name": "Vision",
+    "id": "1009697"
+  },
+  {
+    "name": "Daredevil",
+    "id": "1009262"
+  },
+  {
+    "name": "Gamora",
+    "id": "1010763"
+  },
+  {
+    "name": "Rocket Raccoon",
+    "id": "1010744"
+  },
+  {
+    "name": "Groot",
+    "id": "1010743"
+  },
+  {
+    "name": "Doctor Doom",
+    "id": "1009281"
+  },
+  {
+    "name": "Thanos",
+    "id": "1009652"
+  },
+  {
+    "name": "Loki",
+    "id": "1009407"
+  },
+  {
+    "name": "Magneto",
+    "id": "1009417"
+  },
+  {
+    "name": "Professor X",
+    "id": "1009504"
+  },
+  {
+    "name": "Cyclops",
+    "id": "1009257"
+  },
+  {
+    "name": "Jean Grey",
+    "id": "1009327"
+  },
+  {
+    "name": "Storm",
+    "id": "1009629"
+  },
+  {
+    "name": "Nick Fury",
+    "id": "1009471"
+  },
+  {
+    "name": "Hawkeye",
+    "id": "1009338"
+  },
+  {
+    "name": "Luke Cage",
+    "id": "1009215"
+  },
+  {
+    "name": "Jessica Jones",
+    "id": "1009378"
+  },
+  {
+    "name": "Silver Surfer",
+    "id": "1009592"
+  },
+  {
+    "name": "Punisher",
+    "id": "1009515"
+  },
+  {
+    "name": "Moon Knight",
+    "id": "1009452"
+  },
+  {
+    "name": "Elektra",
+    "id": "1009288"
+  },
+  {
+    "name": "Mystique",
+    "id": "1009465"
+  },
+  {
+    "name": "Kingpin",
+    "id": "1009389"
+  },
+  {
+    "name": "Doctor Octopus",
+    "id": "1009276"
+  },
+  {
+    "name": "Red Skull",
+    "id": "1009535"
+  },
+  {
+    "name": "Mister Sinister",
+    "id": "1009447"
+  },
+  {
+    "name": "Ultron",
+    "id": "1009685"
+  },
+  {
+    "name": "Black Cat",
+    "id": "1009185"
+  },
+  {
+    "name": "Shang-Chi",
+    "id": "1009577"
+  },
+  {
+    "name": "Falcon",
+    "id": "1009297"
+  },
+  {
+    "name": "Quicksilver",
+    "id": "1009524"
+  },
+  {
+    "name": "Invisible Woman",
+    "id": "1009366"
+  },
+  {
+    "name": "Mr. Fantastic",
+    "id": "1009459"
+  },
+  {
+    "name": "Human Torch",
+    "id": "1009356"
+  },
+  {
+    "name": "Wasp",
+    "id": "1009707"
+  },
+  {
+    "name": "Silver Sable",
+    "id": "1009590"
+  },
+  {
+    "name": "Blade",
+    "id": "1009191"
+  },
+  {
+    "name": "Sif",
+    "id": "1009588"
+  },
+  {
+    "name": "Hela",
+    "id": "1011482"
+  },
+  {
+    "name": "Rogue",
+    "id": "1009546"
+  },
+  {
+    "name": "Gambit",
+    "id": "1009313"
+  },
+  {
+    "name": "Iceman",
+    "id": "1009362"
+  },
+  {
+    "name": "Mantis",
+    "id": "1011026"
+  },
+  {
+    "name": "Howard The Duck",
+    "id": "1010373"
+  },
+  {
+    "name": "Cloak",
+    "id": "1009241"
+  },
+  {
+    "name": "Dagger",
+    "id": "1009258"
+  },
+  {
+    "name": "Jubilee",
+    "id": "1009381"
+  },
+  {
+    "name": "Moonstone",
+    "id": "1010362"
+  },
+  {
+    "name": "Taskmaster",
+    "id": "1009648"
+  },
+  {
+    "name": "Black Bolt",
+    "id": "1009184"
+  },
+  {
+    "name": "Adam Warlock",
+    "id": "1010354"
+  },
+  {
+    "name": "Nova",
+    "id": "1009477"
+  },
+  {
+    "name": "Lady Deathstrike",
+    "id": "1009393"
+  },
+  {
+    "name": "Mole Man",
+    "id": "1009449"
+  },
+  {
+    "name": "Captain Britain",
+    "id": "1009223"
+  },
+  {
+    "name": "Skaar",
+    "id": "1011223"
+  },
+  {
+    "name": "Psylocke",
+    "id": "1009512"
+  },
+  {
+    "name": "Echo",
+    "id": "1010785"
+  },
+  {
+    "name": "Wiccan",
+    "id": "1009714"
+  },
+  {
+    "name": "Speed",
+    "id": "1010833"
+  },
+  {
+    "name": "Sandman",
+    "id": "1009558"
+  },
+  {
+    "name": "Kraven the Hunter",
+    "id": "1009391"
+  }
+]
+

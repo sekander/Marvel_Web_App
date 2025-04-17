@@ -1,0 +1,26 @@
+digraph ERD {
+    node [shape=record, fontname=Arial, fontsize=12];
+
+    // Entities
+    User [label="{User|UserID: int|Name: string|Email: string|Password: string|Role: string}"];
+    Order [label="{Order|OrderID: int|UserID: int|TotalAmount: float|OrderDate: date|PaymentID: int}"];
+    ShoppingCart [label="{ShoppingCart|CartID: int|UserID: int}"];
+    OrderItem [label="{OrderItem|OrderItemID: int|OrderID: int|ComicID: int|Quantity: int|Price: float}"];
+    Comic [label="{Comic|ComicID: int|Title: string|Price: float|CategoryID: int|Stock: int}"];
+    Category [label="{Category|CategoryID: int|Name: string}"];
+    ShoppingCartItem [label="{ShoppingCartItem|CartItemID: int|CartID: int|ComicID: int|Quantity: int}"];
+    Payment [label="{Payment|PaymentID: int|OrderID: int|PaymentMethod: string|PaymentStatus: string|PaymentDate: date}"];
+
+    // Relationships
+    User -> Order [label="places", dir=both];
+    User -> ShoppingCart [label="has", dir=both];
+    Order -> OrderItem [label="contains", dir=both];
+    Order -> Payment [label="has", dir=both, constraint=true]; // One-to-one relationship
+    OrderItem -> Comic [label="references", dir=both];
+    ShoppingCart -> ShoppingCartItem [label="contains", dir=both];
+    ShoppingCartItem -> Comic [label="references", dir=both];
+    Comic -> Category [label="belongs to", dir=both];
+    Category -> Comic [label="contains", dir=both];
+    Payment -> Order [label="belongs to", dir=both, constraint=true]; // One-to-one relationship
+}
+

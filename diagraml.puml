@@ -1,0 +1,81 @@
+@startuml
+
+entity User {
+    + UserID : int
+    --
+    Name : string
+    Email : string
+    Password : string
+    Role : string
+}
+
+entity Order {
+    + OrderID : int
+    --
+    UserID : int
+    TotalAmount : float
+    OrderDate : datetime
+    PaymentID : int
+}
+
+entity OrderItem {
+    + OrderItemID : int
+    --
+    OrderID : int
+    ComicID : int
+    Quantity : int
+    Price : float
+}
+
+entity Comic {
+    + ComicID : int
+    --
+    Title : string
+    Price : float
+    CategoryID : int
+    Stock : int
+}
+
+entity Category {
+    + CategoryID : int
+    --
+    Name : string
+}
+
+entity ShoppingCart {
+    + CartID : int
+    --
+    UserID : int
+}
+
+entity ShoppingCartItem {
+    + CartItemID : int
+    --
+    CartID : int
+    ComicID : int
+    Quantity : int
+}
+
+entity Payment {
+    + PaymentID : int
+    --
+    OrderID : int
+    PaymentMethod : string
+    PaymentStatus : string
+    PaymentDate : datetime
+}
+
+' Relationships
+User ||--|{ Order : places
+User ||--|| ShoppingCart : has
+Order ||--|{ OrderItem : contains
+Order ||--|| Payment : has
+OrderItem }|--|| Comic : references
+Comic }|--|| Category : belongs_to
+Category ||--|{ Comic : contains
+ShoppingCart ||--|{ ShoppingCartItem : includes
+ShoppingCartItem }|--|| Comic : references
+Payment ||--|| Order : for
+
+@enduml
+
