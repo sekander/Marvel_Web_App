@@ -1,5 +1,6 @@
 @using System.Text.Json
 @{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
     ViewData["Title"] = "Dashboard";
     var role = User.IsInRole("Admin") ? "Admin" :
                User.IsInRole("Manager") ? "Manager" : 

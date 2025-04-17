@@ -1,12 +1,15 @@
+
 @page
 @model MarvelWebApp.Models.LoginViewModel
-@{
+
+@{  
+    Layout = "~/Pages/Shared/_Layout.cshtml";
     @* ViewData["Title"] = "Login"; *@
 }
 
 @* <h2>@ViewData["Title"]</h2> *@
 
-<form method="post">
+<form method="post" class="mt-5 mb-5 d-flex flex-column">
     @Html.AntiForgeryToken()  <!-- Add this line to include the anti-forgery token -->
     <div class="form-group">
         <label for="Input_Email">Email</label>
@@ -21,7 +24,7 @@
                 @* <input type="password" id="Password" name="Password" class="form-control" required /> *@
     </div>
 
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="submit" class="mv-btn">Login</button>
 </form>
 
 @* @if (ViewData["ErrorMessage"] != null)
