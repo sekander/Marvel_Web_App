@@ -4,6 +4,23 @@
 }
 <section class="row mt-5 mb-5">
 <div class="col-left">
+        <div class="mask-group-wrapper">
+           
+            <img class="mask-group-icon" alt="" src="~/ManagerProfile.jpg">
+
+        </div>
+        <br>
+        
+        <div class="title">USER</div>
+        <br><br>
+        <a href="#">
+            <div class="task">View Cart</div>
+        </a>
+        <a href="#">
+            <div class="task">Collection</div>
+        </a>
+
+   
 
 </div>
 <div class="col-right">
@@ -11,20 +28,21 @@
 
 <div>
     <h2>Search Comics</h2>
-    <input type="text" id="searchTitle" placeholder="Enter comic title" />
-    <button id="searchComicsBtn" class="btn btn-primary">Search</button>
+    <div class="d-flex flex-row gap-2"><input type="text" id="searchTitle" placeholder="Enter comic title" />
+                <button id="searchComicsBtn">Search<i class="fa-solid fa-magnifying-glass pt-1 "></i></button>
+            </div>
     <div id="searchResults" class="row mt-3"></div>
 </div>
 
 <div class="mt-4">
     <h2>Shopping Cart</h2>
-    <button id="viewCartBtn" class="btn btn-info">View Cart</button>
+            <button id="viewCartBtn">View Cart<i class="fa-solid fa-cart-shopping p-1"></i></button>
     <div id="cartItems" class="mt-2"></div>
 </div>
 
 <div class="mt-4">
     <h2>Checkout</h2>
-    <button id="checkoutBtn" class="btn btn-success">Checkout</button>
+            <button id="checkoutBtn">Checkout<i class="fa-regular fa-credit-card p-1"></i></button>
 </div>
 
 
@@ -137,14 +155,14 @@
         if (response.ok) {
             results.forEach(comic => {
                 const card = $(`
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100">
+                    <div class="col-md-3 mb-4 gap-3">
+                        <div class="card bg-dark h-100 p-2">
                             <img src="${comic.coverImageUrl}.jpg" class="card-img-top" style="cursor:pointer;" alt="${comic.title}">
                             <div class="card-body">
                                 <h5 class="card-title">${comic.title}</h5>
                                 <p class="card-text">Price: $${comic.price}</p>
                                 <input type="number" id="quantity-${comic.comicID}" value="1" min="1" class="form-control mb-2">
-                                <button class="btn btn-primary add-to-cart-btn" data-comic-id="${comic.comicID}">Add to Cart</button>
+                                <button data-comic-id="${comic.comicID}">Add to Cart<i class="fa fa-plus p-1" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>

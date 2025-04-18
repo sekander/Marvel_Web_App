@@ -85,7 +85,18 @@ namespace MarvelWebApp.Controllers
             return Ok(comics); // Return filtered comics as JSON
         }
 
+        // GET: api/manager/comic/id
+        [HttpGet("comic/{id}")]
+        public async Task<IActionResult> GetComic(int id)
+        {
+            var comic = await _comicService.GetEntityByIdAsync(id);
+            if (comic == null)
+            {
+                return NotFound(new { message = "Comic not found" });
+            }
 
+            return Ok(new { comic });
+        }
         // 2. Add comic to the shopping cart
         // [HttpPost("shopping-cart/add/{comicId}")]
         [HttpPost("shopping-cart/add")]

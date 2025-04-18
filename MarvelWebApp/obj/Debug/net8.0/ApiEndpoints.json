@@ -411,6 +411,22 @@
   },
   {
     "ContainingType": "MarvelWebApp.Controllers.UserAPIController",
+    "Method": "GetComic",
+    "RelativePath": "api/user/comic/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarvelWebApp.Controllers.UserAPIController",
     "Method": "ViewComics",
     "RelativePath": "api/user/comics",
     "HttpMethod": "GET",
