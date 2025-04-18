@@ -1,145 +1,182 @@
 @{
-    ViewData["Title"] = "User Dashboard";
     Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "User Dashboard";
 }
 <section class="row mt-5 mb-5">
 <div class="col-left">
-    <div class="mask-group-wrapper">
-        <br><br>
-        <img class="mask-group-icon" alt="" src="~/ManagerProfile.jpg">
-
-    </div>
-    <br><br>
-    <div class="title">User</div>
-    <br><br>
-    <a href="#">
-        <div class="task">SETTING</div>
-    </a>
-    <a href="#">
-            <div class="task">COLLECTION</div>
-    </a>
 
 </div>
 <div class="col-right">
-    
 <h1>User Dashboard</h1>
 
 <div>
     <h2>Search Comics</h2>
     <input type="text" id="searchTitle" placeholder="Enter comic title" />
-    <button id="searchComicsBtn">Search</button>
-    <div id="searchResults"></div>
+    <button id="searchComicsBtn" class="btn btn-primary">Search</button>
+    <div id="searchResults" class="row mt-3"></div>
 </div>
 
-<div>
+<div class="mt-4">
     <h2>Shopping Cart</h2>
-    <button id="viewCartBtn">View Cart</button>
-    <div id="cartItems"></div>
+    <button id="viewCartBtn" class="btn btn-info">View Cart</button>
+    <div id="cartItems" class="mt-2"></div>
 </div>
 
-<div>
+<div class="mt-4">
     <h2>Checkout</h2>
-    <button id="checkoutBtn">Checkout</button>
+    <button id="checkoutBtn" class="btn btn-success">Checkout</button>
+</div>
+
+
+
+<!-- ✅ Modal for comic details -->
+<div class="modal fade" id="comicModal" tabindex="-1" aria-labelledby="comicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="comicModalLabel">Comic Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="comicModalBody">
+                <!-- Details will be filled dynamically -->
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 </section>
-
-
-
 <script>
     const apiBaseUrl = "/api/user";
 
+    // Show modal with comic details
+    async function showComicDetails(comicId)
+    {
+        try {
+            const response = await fetch(`${apiBaseUrl}/comic/${comicId}`);
+            const result = await response.json();
+            const comic = result.comic;
 
-    // Search comics
-    document.getElementById("searchComicsBtn").addEventListener("click", async () => {
-        const title = document.getElementById("searchTitle").value;
-        const response = await fetch(`${apiBaseUrl}/comics/search?title=${title}`);
-        const results = await response.json();
-        const searchResults = document.getElementById("searchResults");
+            console.log("Comic ID sent to API:", comicId);
+            console.log("Response status:", response.status);
+            console.log("Response body:", result);
+            console.log("Comic object:", comic);
 
-            searchResults.innerHTML = ''; // Clear previous search results
+            if (response.ok && comic) {
+                let content = "";
 
-        if (response.ok) {
-            // Create a grid container for comic cards
-            const comicsGrid = document.createElement("div");
-            comicsGrid.classList.add("comics-grid");
-
-            // Loop through the search results and create a card for each comic
-            for (let i = 0; i < results.length; i++) {
-                const comic = results[i];
-
-                // Create a card div for each comic
-                const card = document.createElement("div");
-                card.classList.add("comic-card");
-
-                // Set up the card content (image, title, price, quantity input, add to cart button)
-                card.innerHTML = `
-                    <img src="${comic.coverImageUrl}.jpg" alt="${comic.title}" class="comic-image">
-                    <div class="gap-5"><h3>${comic.title}</h3>
-                    <p>Price: $${comic.price}</p>
-                    <input type="number" id="quantity-${comic.comicID}" value="1" min="1">
-                    <button class="add-to-cart-btn mt-5" data-comic-id="${comic.comicID}">Add to Cart</button><div>
+                // Title + Thumbnail side by side
+                content += `
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="${comic.thumbnailURL}.jpg" alt="${comic.title}" class="me-3 rounded" style="width: 64px; height: auto;" />
+                        <h5 class="mb-0">${comic.title}</h5>
+                    </div>
                 `;
 
-                // Append the card to the comics grid
-                comicsGrid.appendChild(card);
+                content += `<ul class="list-group">`;
 
-                // Add event listener for the "Add to Cart" button
-                const addToCartBtn = card.querySelector(".add-to-cart-btn");
-                addToCartBtn.addEventListener("click", async () => {
-                    const comicId = addToCartBtn.getAttribute("data-comic-id");
-                    const quantity = document.getElementById(`quantity-${comicId}`).value;
-                    await addToCart(comicId, quantity);
+                // Loop through all key-value pairs
+                Object.entries(comic).forEach(([key, value]) => {
+                    if (["title", "coverImageUrl", "thumbnailURL"].includes(key)) return;
+
+                    let displayValue;
+
+                    if (Array.isArray(value)) {
+                        displayValue = value.length > 0 ? JSON.stringify(value, null, 2) : "(empty array)";
+                    } else if (value === null || value === "") {
+                        displayValue = "(none)";
+                    } else if (typeof value === "string" && value.startsWith("http")) {
+                        displayValue = `<a href="${value}" target="_blank">${value}</a>`;
+                    } else {
+                        displayValue = value;
+                    }
+
+                    content += `
+                        <li class="list-group-item">
+                            <strong>${key}:</strong> ${displayValue}
+                        </li>
+                    `;
                 });
-            }
 
-            // Add the comics grid to the search results container
-            searchResults.appendChild(comicsGrid);
-        } else {
-            searchResults.innerHTML = `<p>${results.message}</p>`;
-        }
-    });
+                content += `</ul>`;
 
-   // Function to add a comic to the shopping cart
-    async function addToCart(comicId, quantity) {
-        try {
-            const response = await fetch(`${apiBaseUrl}/shopping-cart/add?comicId=${comicId}&quantity=${quantity}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    // Add other headers if needed (such as Authorization)
-                },
-            });
-
-            // Handle the response
-            const result = await response.json();
-
-            if (response.ok) {
-                alert(result.message); // Comic added successfully
+                // Show in modal
+                $("#comicModalBody").html(content);
+                const modal = new bootstrap.Modal(document.getElementById('comicModal'));
+                modal.show();
             } else {
-                alert(`Error: ${result.message}`); // Handle errors (e.g., Comic not found)
+                alert(`Error: ${result.message || "No comic data found."}`);
             }
-        } catch (error) {
-            console.error("Error adding comic to cart:", error);
-            alert("An error occurred while adding the comic to the cart.");
+        } catch (err) {
+            console.error("Error loading comic:", err);
+            alert("Failed to load comic details.");
         }
     }
 
 
-    // View shopping cart
-    document.getElementById("viewCartBtn").addEventListener("click", async () => {
-        const response = await fetch(`${apiBaseUrl}/shopping-cart`);
-        const cartItems = await response.json();
-        const cartItemsDiv = document.getElementById("cartItems");
-        if (cartItems.length > 0) {
-            cartItemsDiv.innerHTML = cartItems.map(i => `<p>${i.comicTitle} - Quantity: ${i.quantity}</p>`).join("");
+    async function addToCart(comicId, quantity) {
+        try {
+            const response = await fetch(`${apiBaseUrl}/shopping-cart/add?comicId=${comicId}&quantity=${quantity}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" }
+            });
+
+            const result = await response.json();
+            alert(response.ok ? result.message : `Error: ${result.message}`);
+        } catch (err) {
+            console.error(err);
+            alert("Failed to add comic to cart.");
+        }
+    }
+
+    $("#searchComicsBtn").on("click", async function () {
+        const title = $("#searchTitle").val();
+        const response = await fetch(`${apiBaseUrl}/comics/search?title=${title}`);
+        const results = await response.json();
+        const $results = $("#searchResults").empty();
+
+        if (response.ok) {
+            results.forEach(comic => {
+                const card = $(`
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <img src="${comic.coverImageUrl}.jpg" class="card-img-top" style="cursor:pointer;" alt="${comic.title}">
+                            <div class="card-body">
+                                <h5 class="card-title">${comic.title}</h5>
+                                <p class="card-text">Price: $${comic.price}</p>
+                                <input type="number" id="quantity-${comic.comicID}" value="1" min="1" class="form-control mb-2">
+                                <button class="btn btn-primary add-to-cart-btn" data-comic-id="${comic.comicID}">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                `);
+                card.find("img").on("click", () => showComicDetails(comic.id));
+                card.find(".add-to-cart-btn").on("click", async function () {
+                    const comicId = $(this).data("comic-id");
+                    const quantity = $(`#quantity-${comicId}`).val();
+                    await addToCart(comicId, quantity);
+                });
+                $results.append(card);
+            });
         } else {
-            cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+            $results.html(`<div class="alert alert-warning">${results.message}</div>`);
         }
     });
 
-    // Checkout
-    document.getElementById("checkoutBtn").addEventListener("click", async () => {
+    $("#viewCartBtn").on("click", async function () {
+        const response = await fetch(`${apiBaseUrl}/shopping-cart`);
+        const cartItems = await response.json();
+        const $cart = $("#cartItems").empty();
+
+        if (cartItems.length > 0) {
+            cartItems.forEach(i => {
+                $cart.append(`<p>${i.comicTitle} - Quantity: ${i.quantity}</p>`);
+            });
+        } else {
+            $cart.html("<p>Your cart is empty.</p>");
+        }
+    });
+
+    $("#checkoutBtn").on("click", async function () {
         const response = await fetch(`${apiBaseUrl}/purchase`, { method: "POST" });
         const result = await response.json();
         alert(result.message);
