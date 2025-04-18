@@ -158,7 +158,7 @@ margin:auto;
 
 .col-left {
     flex: 0 0 20%; /* fixed flex shorthand */
-    margin: auto 0; /* vertically center if height allows */
+    margin: 300px 0; /* vertically center if height allows */
 }
 
 .col-right {
@@ -182,7 +182,7 @@ margin:auto;
     flex-direction: row;
     width: 100%;
     align-items: flex-start;
-    gap: 36px;
+    gap: 5rem;
 }
 
 .create-account {
@@ -268,20 +268,29 @@ textarea {
     transition: border-color 0.3s ease;
 }
 
-    input:focus,
-    textarea:focus {
+input:focus,
+textarea:focus {
         border-color: #4caf50;
         outline: none;
-    }
+}
 
+.comic-card {
+display:flex;
+flex-direction: row;
 
+gap:8px;
+margin-bottom:3rem;
+}
+.comic-card img {
+width:200px;
+}
 
 .mask-group-icon {
-    width: 108px;
-    position: relative;
-    height: 108px;
-    object-fit: cover;
-}
+        width: 108px;
+        position: relative;
+        height: 108px;
+        object-fit: cover;
+ }
 
 .mask-group-wrapper {
     width: 315px;
