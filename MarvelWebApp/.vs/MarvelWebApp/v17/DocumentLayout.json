@@ -3,31 +3,32 @@
   "WorkspaceRootPath": "D:\\Humber College\\Marvel2\\MarvelWebApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\AppData\\Local\\Temp\\.vsdbgsrc\\1ca169b5f8096b3fd01bc738c77225099d363dea7bb508bd774b256157500bca\\Monitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|d:\\humber college\\marvel2\\marvelwebapp\\views\\admin\\userdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|solutionrelative:views\\admin\\userdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|d:\\humber college\\marvel2\\marvelwebapp\\views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|solutionrelative:views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|d:\\humber college\\marvel2\\marvelwebapp\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|d:\\humber college\\marvel2\\marvelwebapp\\views\\admin\\managerdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|solutionrelative:views\\admin\\managerdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|d:\\humber college\\marvel2\\marvelwebapp\\pages\\shared\\_layout_login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|solutionrelative:pages\\shared\\_layout_login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|d:\\humber college\\marvel2\\marvelwebapp\\controllers\\api\\userapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|solutionrelative:controllers\\api\\userapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|d:\\humber college\\marvel2\\marvelwebapp\\controllers\\api\\managerapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|solutionrelative:controllers\\api\\managerapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|d:\\humber college\\marvel2\\marvelwebapp\\controllers\\api\\userapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|solutionrelative:controllers\\api\\userapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|d:\\humber college\\marvel2\\marvelwebapp\\pages\\shared\\_layout_login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|solutionrelative:pages\\shared\\_layout_login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|d:\\humber college\\marvel2\\marvelwebapp\\views\\admin\\managerdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|solutionrelative:views\\admin\\managerdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|d:\\humber college\\marvel2\\marvelwebapp\\views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E46D2E0E-3BC0-101B-4A23-511128335FA0}|MarvelWebApp.csproj|solutionrelative:views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,22 +38,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Monitor.cs",
-              "DocumentMoniker": "C:\\Users\\user\\AppData\\Local\\Temp\\.vsdbgsrc\\1ca169b5f8096b3fd01bc738c77225099d363dea7bb508bd774b256157500bca\\Monitor.cs",
-              "ToolTip": "C:\\Users\\user\\AppData\\Local\\Temp\\.vsdbgsrc\\1ca169b5f8096b3fd01bc738c77225099d363dea7bb508bd774b256157500bca\\Monitor.cs [Read Only]",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAjwFcAAAACAAAAAQAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T16:01:36.409Z",
-              "EditorCaption": " [Read Only]"
+              "DocumentIndex": 1,
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\Humber College\\Marvel2\\MarvelWebApp\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
+              "ToolTip": "D:\\Humber College\\Marvel2\\MarvelWebApp\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "wwwroot\\css\\site.css",
+              "ViewState": "AgIAABoCAAAAAAAAAAAAACcCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-18T16:56:47.165Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "UserAPIController.cs",
               "DocumentMoniker": "D:\\Humber College\\Marvel2\\MarvelWebApp\\Controllers\\API\\UserAPIController.cs",
               "RelativeDocumentMoniker": "Controllers\\API\\UserAPIController.cs",
@@ -65,7 +68,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "ManagerAPIController.cs",
               "DocumentMoniker": "D:\\Humber College\\Marvel2\\MarvelWebApp\\Controllers\\API\\ManagerAPIController.cs",
               "RelativeDocumentMoniker": "Controllers\\API\\ManagerAPIController.cs",
@@ -91,7 +94,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ManagerDashboard.cshtml",
               "DocumentMoniker": "D:\\Humber College\\Marvel2\\MarvelWebApp\\Views\\Admin\\ManagerDashboard.cshtml",
               "RelativeDocumentMoniker": "Views\\Admin\\ManagerDashboard.cshtml",
@@ -104,20 +107,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "UserDashboard.cshtml",
               "DocumentMoniker": "D:\\Humber College\\Marvel2\\MarvelWebApp\\Views\\Admin\\UserDashboard.cshtml",
               "RelativeDocumentMoniker": "Views\\Admin\\UserDashboard.cshtml",
               "ToolTip": "D:\\Humber College\\Marvel2\\MarvelWebApp\\Views\\Admin\\UserDashboard.cshtml",
               "RelativeToolTip": "Views\\Admin\\UserDashboard.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAjwC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-18T02:24:18.724Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Dashboard.cshtml",
               "DocumentMoniker": "D:\\Humber College\\Marvel2\\MarvelWebApp\\Views\\Admin\\Dashboard.cshtml",
               "RelativeDocumentMoniker": "Views\\Admin\\Dashboard.cshtml",
@@ -125,8 +128,7 @@
               "RelativeToolTip": "Views\\Admin\\Dashboard.cshtml",
               "ViewState": "AgIAAA4AAAAAAAAAAAAwwB0AAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-17T22:18:36.081Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-17T22:18:36.081Z"
             }
           ]
         }

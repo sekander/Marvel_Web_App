@@ -48,14 +48,14 @@
 
 
 <!-- ✅ Modal for comic details -->
-<div class="modal fade" id="comicModal" tabindex="-1" aria-labelledby="comicModalLabel" aria-hidden="true">
+<div class="modal fade  " id="comicModal" tabindex="-1" aria-labelledby="comicModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
+                <div class="modal-content bg-dark bg-opacity-75 text-white">
             <div class="modal-header">
                 <h5 class="modal-title" id="comicModalLabel">Comic Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" id="comicModalBody">
+                    <div class="modal-body row p-3" id="comicModalBody">
                 <!-- Details will be filled dynamically -->
             </div>
         </div>
@@ -84,13 +84,17 @@
 
                 // Title + Thumbnail side by side
                 content += `
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="${comic.thumbnailURL}.jpg" alt="${comic.title}" class="me-3 rounded" style="width: 64px; height: auto;" />
-                        <h5 class="mb-0">${comic.title}</h5>
+                    <div class="col-3">
+                        <img src="${comic.thumbnailURL}.jpg" alt="${comic.title}" class="me-3 rounded" style="width: 100%; height: auto;" />
+                       
                     </div>
                 `;
 
-                content += `<ul class="list-group">`;
+                content += `
+                <div class="col-7">
+                    <h5 class="mb-0">${comic.title}</h5>
+                    <ul class="list-group">
+                `;
 
                 // Loop through all key-value pairs
                 Object.entries(comic).forEach(([key, value]) => {
@@ -109,13 +113,14 @@
                     }
 
                     content += `
-                        <li class="list-group-item">
+                        <li class="list-group-item bg-dark bg-opacity-75 text-white">
                             <strong>${key}:</strong> ${displayValue}
                         </li>
+                       
                     `;
                 });
 
-                content += `</ul>`;
+                content += `</ul></div>`;
 
                 // Show in modal
                 $("#comicModalBody").html(content);

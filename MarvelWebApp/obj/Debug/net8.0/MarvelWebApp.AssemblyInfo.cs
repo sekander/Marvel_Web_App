@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MarvelWebApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6dd514a8ea76514dc80303b94ba2b6d43d1abde2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8b379224909491ff21ae27a078ed5e2e1c86eb6")]
 [assembly: System.Reflection.AssemblyProductAttribute("MarvelWebApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MarvelWebApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
