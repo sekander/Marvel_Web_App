@@ -221,3 +221,4 @@ D:\Humber College\Marvel2\MarvelWebApp\obj\Debug\net8.0\refint\MarvelWebApp.dll
 D:\Humber College\Marvel2\MarvelWebApp\obj\Debug\net8.0\MarvelWebApp.pdb
 D:\Humber College\Marvel2\MarvelWebApp\obj\Debug\net8.0\MarvelWebApp.genruntimeconfig.cache
 D:\Humber College\Marvel2\MarvelWebApp\obj\Debug\net8.0\ref\MarvelWebApp.dll
+D:\Humber College\Marvel2\MarvelWebApp\obj\Debug\net8.0\scopedcss\Pages\Shared\_Layout_LogIn.cshtml.rz.scp.css

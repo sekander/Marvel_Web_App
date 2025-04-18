@@ -12,10 +12,9 @@ namespace MarvelWebApp.Controllers
         public IActionResult Dashboard()
         {
             Console.WriteLine("User Dashboard");
-            // return View("../Account/User/Dashboard");
             return View("../Admin/UserDashboard");
         }
-        
+
         // Logout action
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -40,6 +39,5 @@ namespace MarvelWebApp.Controllers
             // HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
         }
-
     }
 }
