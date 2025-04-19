@@ -12,7 +12,7 @@ namespace MarvelWebApp.Data
         {
         }
 
-           public DbSet<Order> Orders { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Comic> Comics { get; set; }
         // public DbSet<Category> Categories { get; set; }
@@ -126,6 +126,7 @@ namespace MarvelWebApp.Data
             builder.Entity<ShoppingCartItem>()
                 .HasOne(sci => sci.Comic)
                 .WithMany(c => c.ShoppingCartItems)
+                // .HasForeignKey(sci => sci.);
                 .HasForeignKey(sci => sci.ComicID);
 
             builder.Entity<Payment>()
