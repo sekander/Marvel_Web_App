@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "C39ukJwOhbynKEs9QWYHUAJJWccOS9qAv/AQq8+xm5I=",
+  "Hash": "u8cwu98uhO0Ktz9KffMwy53oUhEWibiB74zUVDH8IOU=",
   "Source": "MarvelWebApp",
   "BasePath": "_content/MarvelWebApp",
   "Mode": "Default",
@@ -1193,6 +1193,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/wwwroot/logo.svg",
+      "SourceId": "MarvelWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/wwwroot/",
+      "BasePath": "_content/MarvelWebApp",
+      "RelativePath": "logo.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/logo.svg"
+    },
+    {
+      "Identity": "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/wwwroot/ManagerProfile.jpg",
+      "SourceId": "MarvelWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/wwwroot/",
+      "BasePath": "_content/MarvelWebApp",
+      "RelativePath": "ManagerProfile.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/ManagerProfile.jpg"
     }
   ]
 }

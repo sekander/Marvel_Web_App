@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets/MarvelWebApp.bundle.scp.css"
     },
     {
+      "Id": "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/wwwroot/ManagerProfile.jpg",
+      "PackagePath": "staticwebassets/ManagerProfile.jpg"
+    },
+    {
       "Id": "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
@@ -243,6 +247,10 @@
     {
       "Id": "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/wwwroot/lib/jquery/dist/jquery.min.map",
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
+    },
+    {
+      "Id": "/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/wwwroot/logo.svg",
+      "PackagePath": "staticwebassets/logo.svg"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.MarvelWebApp.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -109,3 +109,5 @@
 /home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/obj/Debug/net8.0/MarvelWebApp.pdb
 /home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/obj/Debug/net8.0/MarvelWebApp.genruntimeconfig.cache
 /home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/obj/Debug/net8.0/ref/MarvelWebApp.dll
+/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/obj/Debug/net8.0/MarvelWebApp.sourcelink.json
+/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/obj/Debug/net8.0/scopedcss/Pages/Shared/_Layout_Login.cshtml.rz.scp.css

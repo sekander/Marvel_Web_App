@@ -19,7 +19,8 @@ namespace MarvelWebApp.Controllers
         private readonly IEntityService<Payment> _paymentService;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public ShoppingCart userCart;
+        private ShoppingCart userCart;
+        private List<ShoppingCartItem> userCartItems;
 
         public UserAPIController(
             IEntityService<Comic> comicService,
@@ -85,50 +86,139 @@ namespace MarvelWebApp.Controllers
             return Ok(comics); // Return filtered comics as JSON
         }
 
+        // GET: api/manager/comic/id
+        [HttpGet("comic/{id}")]
+        public async Task<IActionResult> GetComic(int id)
+        {
+            var comic = await _comicService.GetEntityByIdAsync(id);
+            if (comic == null)
+            {
+                return NotFound(new { message = "Comic not found" });
+            }
+
+            return Ok(new {comic});
+        }
+
+
 
         // 2. Add comic to the shopping cart
         // [HttpPost("shopping-cart/add/{comicId}")]
         [HttpPost("shopping-cart/add")]
         public async Task<IActionResult> AddToCart(int comicId, int quantity)
         {
-            var user = await _userManager.GetUserAsync(User);
+            
+            var user = HttpContext.User;
+            if (user?.Identity?.Name == null)
+            {
+                return Unauthorized(new { message = "User not authenticated" });
+            }
+
+            var appUser = await _userManager.FindByEmailAsync(user.Identity.Name);
+            if (appUser == null)
+            {
+                return NotFound(new { message = "User not found" });
+            }
+
+            var allCarts = await _cartService.GetAllEntityAsync();
+            userCart = allCarts.FirstOrDefault(c => c.UserID == appUser.Id);
+
+            if (userCart == null)
+            {
+                userCart = new ShoppingCart
+                {
+                    UserID = appUser.Id,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now
+                };
+                await _cartService.CreateEntityAsync(userCart);
+            }
+            else
+            {
+                userCart.UpdatedAt = DateTime.Now;
+                await _cartService.UpdateEntityAsync(userCart);
+            }
+            Console.WriteLine(comicId);
+
+            // var comic = await _comicService.GetEntityByIdAsync(comicId);
+            var comic = await _comicService.GetEntityByIdAsync(3);
+            if (comic == null)
+            {
+                return NotFound(new { message = "Comic not found" });
+            }
+
+            var cartItem = new ShoppingCartItem
+            {
+                ShoppingCartID = userCart.ShoppingCartID,
+                ComicID = comic.ComicID,
+                Quantity = quantity,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+                PriceAtAdd = comic.Price
+            };
+            await _cartItemService.CreateEntityAsync(cartItem);
+
+            var allItems = await _cartItemService.GetAllEntityAsync();
+            userCartItems = allItems.Where(i => i.ShoppingCartID == userCart.ShoppingCartID).ToList();
+
+            var allComics = await _comicService.GetAllEntityAsync();
+
+            // ✅ Debug log: print all items in this user's cart
+            Console.WriteLine($"=== Cart Items for User ID: {appUser.Id} ===");
+            foreach (var item in userCartItems)
+            {
+                var relatedComic = allComics.FirstOrDefault(c => c.ComicID == item.ComicID);
+                Console.WriteLine($"ItemID: {item.ShoppingCartItemID}, Comic: {relatedComic?.Title}, Quantity: {item.Quantity}, Price: {item.PriceAtAdd:C}, Added: {item.CreatedAt}");
+            }
+            Console.WriteLine("=== End of Cart Items ===");
+
+            return Ok(new { message = "Comic added to shopping cart successfully" });
+
+
+            /*
+            // var user = await _userManager.GetUserAsync(User);
+            var user = HttpContext.User;
+
+            // var userId = user.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+            
+            
+            
+            var userId = await _userManager.FindByEmailAsync(user.Identity.Name);
+            Console.WriteLine($"User ID: {userId}");
+            // var userId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+            Console.WriteLine($"User ID: {userId}");
+            // Console.WriteLine($"User Name: {user.UserName}");
+
             if (user == null)
             {
                 Console.WriteLine("User not found");
                 return Unauthorized(); // Ensure user is logged in
             }
-
-            // ShoppingCart cart;
-            // string userID =  
-
-            // Check if shopping cart exists for the user
-            // var cart = await _cartService.GetEntityByIdAsync(user.Id);
-            // if (cart == null)
-            // {
-                // Create a new shopping cart if one doesn't exist
-                // cart = new ShoppingCart
                 
-                userCart = new ShoppingCart
-                {
-                    UserID = user.Id,
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now
-                };
-                // await _cartService.CreateEntityAsync(cart);
-                await _cartService.CreateEntityAsync(userCart);
+            userCart = new ShoppingCart
+            {
+                // UserID = user.Id,
+                UserID = userId?.Id ?? throw new InvalidOperationException("User ID cannot be null"),
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
+            };
+            // await _cartService.CreateEntityAsync(cart);
+            Console.WriteLine("User ID: " + userId?.Id + 
+                              " Cart ID: " + userCart.ShoppingCartID + 
+                              " CreatedAt: " + userCart.CreatedAt + 
+                              " UpdatedAt: " + userCart.UpdatedAt);
+            await _cartService.CreateEntityAsync(userCart);
             // }
-
+            Console.WriteLine("Comic ID: " + comicId);
             // Fetch comic from the database
-            var comic = await _comicService.GetEntityByIdAsync(comicId);
+            // var comic = await _comicService.GetEntityByIdAsync(comicId);
+            var comic = await _comicService.GetEntityByIdAsync(3);
             if (comic == null)
             {
                 return NotFound(new { message = "Comic not found" }); // Comic not found
             }
-
             // Add the comic to the shopping cart
             var cartItem = new ShoppingCartItem
             {
-                // ShoppingCartID = cart.ShoppingCartID,
                 ShoppingCartID = userCart.ShoppingCartID,
                 ComicID = comic.ComicID,
                 Quantity = quantity,
@@ -139,7 +229,22 @@ namespace MarvelWebApp.Controllers
 
             await _cartItemService.CreateEntityAsync(cartItem);
 
+            // Fetch all items in the cart
+            var cartItems = await _cartItemService.GetAllEntityAsync();
+            // var userCartItems = cartItems.Where(item => item.ShoppingCartID == userCart.ShoppingCartID).ToList();
+
+            userCartItems = [cartItem];
+
+            userCartItems = cartItems.Where(item => item.ShoppingCartID == userCart.ShoppingCartID).ToList();
+
+            Console.WriteLine("Items in cart:");
+            foreach (var item in userCartItems)
+            {
+                Console.WriteLine($"Item ID: {item.ShoppingCartItemID}, Comic ID: {item.ComicID}, Quantity: {item.Quantity}, Price: {item.PriceAtAdd}");
+            }
+
             return Ok(new { message = "Comic added to shopping cart successfully" });
+            */
         }
 
         // 3. Checkout and make a purchase
@@ -220,16 +325,78 @@ namespace MarvelWebApp.Controllers
         [HttpGet("shopping-cart")]
         public async Task<IActionResult> GetCart()
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Unauthorized();
+            var user = HttpContext.User;
+            if (user?.Identity?.Name == null)
+            {
+                return Unauthorized(new { message = "User not authenticated" });
+            }
 
-            var carts = await _cartService.GetAllEntityAsync();
-            var cart = carts.FirstOrDefault(c => c.UserID == user.Id);
-            if (cart == null) return Ok(new List<ShoppingCartItem>());
+            var appUser = await _userManager.FindByEmailAsync(user.Identity.Name);
+            if (appUser == null)
+            {
+                return NotFound(new { message = "User not found" });
+            }
 
-            var items = await _cartItemService.GetAllEntityAsync();
-            var cartItems = items.Where(i => i.ShoppingCartID == cart.ShoppingCartID).ToList();
-            return Ok(cartItems);
+            var allCarts = await _cartService.GetAllEntityAsync();
+            var userCart = allCarts.FirstOrDefault(c => c.UserID == appUser.Id);
+
+            if (userCart == null)
+            {
+                Console.WriteLine("User has no cart.");
+                return Ok(new List<ShoppingCartItem>());
+            }
+
+            var allItems = await _cartItemService.GetAllEntityAsync();
+            // var userCartItems = allItems.Where(i => i.ShoppingCartID == userCart.ShoppingCartID).ToList();
+
+            // Debug print cart details
+            Console.WriteLine("=== GetCart ===");
+            Console.WriteLine("User ID: " + userCart.UserID);
+            Console.WriteLine("Cart ID: " + userCart.ShoppingCartID);
+            Console.WriteLine("CreatedAt: " + userCart.CreatedAt);
+            Console.WriteLine("UpdatedAt: " + userCart.UpdatedAt);
+            Console.WriteLine("Items in cart:");
+            userCartItems = allItems.Where(i => i.ShoppingCartID == userCart.ShoppingCartID).ToList();
+
+            var allComics = await _comicService.GetAllEntityAsync();
+
+            // ✅ Debug log: print all items in this user's cart
+            Console.WriteLine($"=== Cart Items for User ID: {appUser.Id} ===");
+            foreach (var item in userCartItems)
+            {
+                var relatedComic = allComics.FirstOrDefault(c => c.ComicID == item.ComicID);
+                Console.WriteLine($"ItemID: {item.ShoppingCartItemID}, Comic: {relatedComic?.Title}, Quantity: {item.Quantity}, Price: {item.PriceAtAdd:C}, Added: {item.CreatedAt}");
+            }
+            Console.WriteLine("=== End of Cart Items ===");
+
+            var itemDtos = userCartItems.Select(item => new
+            {
+                item.ShoppingCartItemID,
+                item.ComicID,
+                ComicTitle = allComics.FirstOrDefault(c => c.ComicID == item.ComicID)?.Title,
+                item.Quantity,
+                item.PriceAtAdd,
+                item.CreatedAt
+            }).ToList();
+
+
+            // ✅ Debug log everything clearly
+            Console.WriteLine($"=== Cart Items for User ID: {appUser.Id} ===");
+            foreach (var dto in itemDtos)
+            {
+                Console.WriteLine($"ItemID: {dto.ShoppingCartItemID}, ComicID: {dto.ComicID}, Title: {dto.ComicTitle}, Quantity: {dto.Quantity}, Price: {dto.PriceAtAdd:C}, Added: {dto.CreatedAt}");
+            }
+            Console.WriteLine("=== End of Cart Items ===");
+
+            return Ok(itemDtos);
+
+            // foreach (var item in userCartItems)
+            // {
+            //     Console.WriteLine($"Item ID: {item.ShoppingCartItemID}, Comic ID: {item.ComicID}, Quantity: {item.Quantity}, Price: {item.PriceAtAdd:C}, Added: {item.CreatedAt}");
+            // }
+            // Console.WriteLine("=== End of Cart ===");
+
+            // return Ok(userCartItems);
         }
 
         // Remove item from cart
@@ -242,6 +409,5 @@ namespace MarvelWebApp.Controllers
             await _cartItemService.DeleteEntityAsync(itemId);
             return Ok(new { message = "Item removed from cart." });
         }
-
     }
 }

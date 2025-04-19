@@ -9,10 +9,36 @@ namespace MarvelWebApp.Controllers
     public class UserViewController : Controller
     {
         [Route("Dashboard")]
-        public IActionResult Dashboard()
+        public async Task<IActionResult> Dashboard()
         {
             Console.WriteLine("User Dashboard");
-            // return View("../Account/User/Dashboard");
+
+            var user = HttpContext.User;
+            var userId = user.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+            Console.WriteLine($"User ID: {userId}");
+
+            //User Debug
+            if (user.Identity != null && user.Identity.IsAuthenticated)
+            {
+                Console.WriteLine($"User Name: {user.Identity.Name}");
+                
+                Console.WriteLine($"Authentication Type: {user.Identity.AuthenticationType}");
+                Console.WriteLine($"Is Authenticated: {user.Identity.IsAuthenticated}");
+
+                Console.WriteLine("All Claims:");
+                foreach (var claim in user.Claims)
+                {
+                    Console.WriteLine($"Type: {claim.Type}, Value: {claim.Value}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("User is not authenticated.");
+            }
+
+
+            // var token = await HttpContext.GetTokenAsync("access_token");
+            // Console.WriteLine($"Authorization Token: {token}");
             return View("../Admin/UserDashboard");
         }
         
@@ -40,6 +66,5 @@ namespace MarvelWebApp.Controllers
             // HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
         }
-
     }
 }

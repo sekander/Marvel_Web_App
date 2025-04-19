@@ -46,14 +46,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/Views/Account/Manager/Dashboard.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9NYW5hZ2VyL0Rhc2hib2FyZC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/Views/Account/User/Dashboard.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Vc2VyL0Rhc2hib2FyZC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/Views/Admin/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -69,3 +61,7 @@ build_metadata.AdditionalFiles.CssScope =
 [/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-402ohrqgy0
+
+[/home/fnky/C0de/School/Backend_Web_2/Marvel_App/MarvelWebApp/Pages/Shared/_Layout_LogIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXRfTG9nSW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-b5sy4e434j
