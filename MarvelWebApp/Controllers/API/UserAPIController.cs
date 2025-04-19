@@ -490,6 +490,8 @@ namespace MarvelWebApp.Controllers
             {
                 return NotFound(new { message = "Order not found." });
             }
+
+            var userOrderItems = new List<OrderItem>();
             Console.WriteLine("Order ID: " + order.OrderID);
                 var orderItems = await _orderItemService.GetAllEntityAsync();
                 var itemsForOrder = orderItems.Where(oi => oi.OrderID == order.OrderID).ToList();
@@ -498,21 +500,13 @@ namespace MarvelWebApp.Controllers
                 foreach (var item in itemsForOrder)
                 {
                     Console.WriteLine($"  Comic ID: {item.ComicID}, Quantity: {item.Quantity}, Price: {item.PriceAtPurchase:C}");
+                    userOrderItems.Add(item);
                 }
                 Console.WriteLine("=== End of Order Items ===");
-//             Console.WriteLine("Total Price: " + order.TotalPrice);
-//             Console.WriteLine("Order Date: " + order.OrderDate);
-//             Console.WriteLine("Order Details: " + order.OrderDetails);
-//             // You can also print order items if needed
-// //             Console.WriteLine("Order Items:");   
-// //            ERROR
-//             foreach (var item in order.OrderItems)
-//             {
-//                 Console.WriteLine($"  Comic ID: {item.ComicID}, Quantity: {item.Quantity}, Price: {item.PriceAtPurchase:C}");
-//             }   
-
-            return Ok(order); // Return order details as JSON
+            // return Ok(order); // Return order details as JSON
+            return Ok(userOrderItems); // Return order details as JSON
         }
+
         // 6. View payment history
         [HttpGet("payments")]
         public async Task<IActionResult> ViewPayments()

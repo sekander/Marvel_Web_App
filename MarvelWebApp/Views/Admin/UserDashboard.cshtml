@@ -362,25 +362,22 @@ document.getElementById("viewOrderDetailsBtn").addEventListener("click", async (
     console.log("Fetching order details for Order ID:", orderId);
     try {
         const res = await fetch(`${apiBaseUrl}/orders/${orderId}`);
-        console.log("Response status:", res);
         const orderDetails = await res.json();
         console.log("Order Details:", orderDetails);
-
         if (res.ok) {
-            let html = `<h5>Order Details for Order #${orderDetails.orderID}</h5>`;
+            let html = `<h5>Order Details for Order #${orderId}</h5>`;
+            html += `<ul class="list-group">`;
 
-            html += `<pre>=== Order Items ===\n`;
-            if (orderDetails.orderItems && orderDetails.orderItems.length > 0) {
-                orderDetails.orderItems.forEach(item => {
-                    html += `Comic ID: ${item.comicID}, Quantity: ${item.quantity}, Price: $${parseFloat(item.priceAtPurchase).toFixed(2)}\n`;
-                });
-            } else {
-                html += `No items found.\n`;
-            }
-            html += `=== End of Order Items ===</pre>`;
+            orderDetails.forEach(item => {
+                html += `<li class="list-group-item text-dark bg-light mb-2">
+                    <strong>Comic ID:</strong> ${item.comicID}<br>
+                    <strong>Price at Purchase:</strong> $${parseFloat(item.priceAtPurchase).toFixed(2)}<br>
+                    <strong>Quantity:</strong> ${item.quantity}
+                </li>`;
+            });
 
+            html += `</ul>`;
             document.getElementById("historyContent").innerHTML = html;
-            @* new bootstrap.Modal(document.getElementById("historyModal")).show(); *@
         } else {
             document.getElementById("historyContent").innerHTML = `<p>${orderDetails.message || "Order not found."}</p>`;
         }
@@ -389,6 +386,7 @@ document.getElementById("viewOrderDetailsBtn").addEventListener("click", async (
         document.getElementById("historyContent").innerHTML = `<p>Error fetching order details.</p>`;
     }
 });
+
 
 document.getElementById("viewPaymentHistoryBtn").addEventListener("click", async () => {
     try {
