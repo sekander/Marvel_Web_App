@@ -69,7 +69,7 @@
 
 
 <!-- ✅ Modal for Cart Details -->
-<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+@* <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content bg-dark bg-opacity-75 text-white">
             <div class="modal-header">
@@ -81,7 +81,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> *@
 
 
 <div class="mt-4">
@@ -97,10 +97,14 @@
             View Payment History <i class="fa-solid fa-money-bill-wave p-1"></i>
         </button>
     </div>
+
+    <div id="historyContent" class="mt-2">
+        <!-- Order/Payment history will be filled dynamically here -->
+    </div>
 </div>
 
 <!-- ✅ Modal for Order/Payment History -->
-<div class="modal fade" id="historyModal" tabindex="-1" aria-labelledby="historyModalLabel" aria-hidden="true">
+@* <div class="modal fade" id="historyModal" tabindex="-1" aria-labelledby="historyModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content bg-dark bg-opacity-75 text-white">
             <div class="modal-header">
@@ -112,7 +116,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> *@
 
 
 </div>
@@ -278,10 +282,10 @@
             console.log("Showing modal");
 
             // Show the modal using Bootstrap's JavaScript method
-            var cartModal = new bootstrap.Modal(document.getElementById('cartModal'), {
+            @* var cartModal = new bootstrap.Modal(document.getElementById('cartModal'), {
                 keyboard: false
             });
-            cartModal.show();
+            cartModal.show(); *@
 
         } catch (err) {
             console.error("Error fetching cart items:", err);
@@ -296,39 +300,121 @@
     });
 
 
-$("#viewOrdersBtn").on("click", async function () {
+    @* $("#viewOrdersBtn").on("click", async function () {
+        try {
+            const response = await fetch(`${apiBaseUrl}/orders`);
+            const data = await response.json();
+            console.log("🧾 Order History:", data);
+        } catch (err) {
+            console.error("Error fetching order history:", err);
+        }
+    });
+
+    $("#viewOrderDetailsBtn").on("click", async function () {
+        const orderId = 1; // 🔁 Replace with dynamic value later
+        try {
+            const response = await fetch(`${apiBaseUrl}/orders/${orderId}`);
+            const data = await response.json();
+            console.log(`🔍 Order Details (Order ID: ${orderId}):`, data);
+        } catch (err) {
+            console.error("Error fetching order details:", err);
+        }
+    });
+
+    $("#viewPaymentHistoryBtn").on("click", async function () {
+        try {
+            const response = await fetch(`${apiBaseUrl}/payments`);
+            const data = await response.json();
+            console.log("💳 Payment History:", data);
+        } catch (err) {
+            console.error("Error fetching payment history:", err);
+        }
+    }); *@
+    document.getElementById("viewOrdersBtn").addEventListener("click", async () => {
     try {
-        const response = await fetch(`${apiBaseUrl}/orders`);
-        const data = await response.json();
-        console.log("🧾 Order History:", data);
+        const res = await fetch(`${apiBaseUrl}/orders`);
+        const orders = await res.json();
+
+        if (res.ok) {
+            let html = `<h5>Your Orders</h5><ul class="list-group">`;
+            orders.forEach(order => {
+                html += `<li class="list-group-item text-dark bg-light mb-2">
+                    <strong>Order ID:</strong> ${order.orderID}<br>
+                    <strong>Total:</strong> $${order.totalPrice}<br>
+                    <strong>Date:</strong> ${new Date(order.orderDate).toLocaleString()}
+                </li>`;
+            });
+            html += `</ul>`;
+            document.getElementById("historyContent").innerHTML = html;
+            @* new bootstrap.Modal(document.getElementById("historyModal")).show(); *@
+        } else {
+            document.getElementById("historyContent").innerHTML = `<p>${orders.message || "No orders found."}</p>`;
+        }
     } catch (err) {
-        console.error("Error fetching order history:", err);
+        console.error(err);
     }
 });
 
-$("#viewOrderDetailsBtn").on("click", async function () {
-    const orderId = 1; // 🔁 Replace with dynamic value later
+document.getElementById("viewOrderDetailsBtn").addEventListener("click", async () => {
+    const orderId = prompt("Enter Order ID to view details:");
+    if (!orderId) return;
+
+    console.log("Fetching order details for Order ID:", orderId);
     try {
-        const response = await fetch(`${apiBaseUrl}/orders/${orderId}`);
-        const data = await response.json();
-        console.log(`🔍 Order Details (Order ID: ${orderId}):`, data);
+        const res = await fetch(`${apiBaseUrl}/orders/${orderId}`);
+        console.log("Response status:", res);
+        const orderDetails = await res.json();
+        console.log("Order Details:", orderDetails);
+
+        if (res.ok) {
+            let html = `<h5>Order Details for Order #${orderDetails.orderID}</h5>`;
+
+            html += `<pre>=== Order Items ===\n`;
+            if (orderDetails.orderItems && orderDetails.orderItems.length > 0) {
+                orderDetails.orderItems.forEach(item => {
+                    html += `Comic ID: ${item.comicID}, Quantity: ${item.quantity}, Price: $${parseFloat(item.priceAtPurchase).toFixed(2)}\n`;
+                });
+            } else {
+                html += `No items found.\n`;
+            }
+            html += `=== End of Order Items ===</pre>`;
+
+            document.getElementById("historyContent").innerHTML = html;
+            @* new bootstrap.Modal(document.getElementById("historyModal")).show(); *@
+        } else {
+            document.getElementById("historyContent").innerHTML = `<p>${orderDetails.message || "Order not found."}</p>`;
+        }
     } catch (err) {
-        console.error("Error fetching order details:", err);
+        console.error(err);
+        document.getElementById("historyContent").innerHTML = `<p>Error fetching order details.</p>`;
     }
 });
 
-$("#viewPaymentHistoryBtn").on("click", async function () {
+document.getElementById("viewPaymentHistoryBtn").addEventListener("click", async () => {
     try {
-        const response = await fetch(`${apiBaseUrl}/payments`);
-        const data = await response.json();
-        console.log("💳 Payment History:", data);
+        const res = await fetch(`${apiBaseUrl}/payments`);
+        const payments = await res.json();
+
+        if (res.ok) {
+            let html = `<h5>Your Payment History</h5><ul class="list-group">`;
+            payments.forEach(payment => {
+                html += `<li class="list-group-item text-dark bg-light mb-2">
+                    <strong>Payment ID:</strong> ${payment.paymentID}<br>
+                    <strong>Order ID:</strong> ${payment.orderID}<br>
+                    <strong>Amount:</strong> $${payment.paymentAmount}<br>
+                    <strong>Date:</strong> ${payment.paymentDate}<br>
+                    <strong>Transaction ID:</strong> ${payment.transactionID}
+                </li>`;
+            });
+            html += `</ul>`;
+            document.getElementById("historyContent").innerHTML = html;
+            @* new bootstrap.Modal(document.getElementById("historyModal")).show(); *@
+        } else {
+            document.getElementById("historyContent").innerHTML = `<p>${payments.message || "No payments found."}</p>`;
+        }
     } catch (err) {
-        console.error("Error fetching payment history:", err);
+        console.error(err);
     }
 });
-
-
-
-
 
 </script>

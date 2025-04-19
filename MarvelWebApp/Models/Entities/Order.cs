@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Identity;
 
 namespace MarvelWebApp.Models
@@ -13,6 +14,8 @@ namespace MarvelWebApp.Models
         public string OrderDetails { get; set; }
 
         public string UserID { get; set; }
+        
+        [JsonIgnore] // This prevents serialization loop
         public ApplicationUser User { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; }
         public Payment Payment { get; set; }

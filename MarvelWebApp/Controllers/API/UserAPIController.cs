@@ -16,6 +16,7 @@ namespace MarvelWebApp.Controllers
         private readonly IEntityService<ShoppingCart> _cartService;
         private readonly IEntityService<ShoppingCartItem> _cartItemService;
         private readonly IEntityService<Order> _orderService;
+        private readonly IEntityService<OrderItem> _orderItemService;
         private readonly IEntityService<Payment> _paymentService;
         private readonly UserManager<ApplicationUser> _userManager;
 
@@ -27,6 +28,7 @@ namespace MarvelWebApp.Controllers
             IEntityService<ShoppingCart> cartService,
             IEntityService<ShoppingCartItem> cartItemService,
             IEntityService<Order> orderService,
+            IEntityService<OrderItem> orderItemService,
             IEntityService<Payment> paymentService,
             UserManager<ApplicationUser> userManager)
         {
@@ -34,6 +36,7 @@ namespace MarvelWebApp.Controllers
             _cartService = cartService;
             _cartItemService = cartItemService;
             _orderService = orderService;
+            _orderItemService = orderItemService;
             _paymentService = paymentService;
             _userManager = userManager;
         }
@@ -451,12 +454,15 @@ namespace MarvelWebApp.Controllers
             foreach (var order in userOrders)
             {
                 Console.WriteLine($"Order ID: {order.OrderID}, Total Price: {order.TotalPrice:C}, Order Date: {order.OrderDate}");
+                //ERORr
                 // You can also print order items if needed
-                foreach (var item in order.OrderItems)
-                {
-                    Console.WriteLine($"  Comic ID: {item.ComicID}, Quantity: {item.Quantity}, Price: {item.PriceAtPurchase:C}");
-                }
+                // foreach (var item in order.OrderItems)
+                // {
+                //     Console.WriteLine("=== Order Items ===");
+                //     // Console.WriteLine($"  Comic ID: {item.ComicID}, Quantity: {item.Quantity}, Price: {item.PriceAtPurchase:C}");
+                // }
             }
+
 
             return Ok(userOrders); // Return user's orders as JSON
         }
@@ -475,8 +481,9 @@ namespace MarvelWebApp.Controllers
             Console.WriteLine("Order ID: " + orderId);
             // Get all orders and find the user's order
 
-            var allOrders = await _orderService.GetAllEntityAsync();
-            var order = allOrders.FirstOrDefault(o => o.OrderID == orderId && o.UserID == user.Id);
+            // var allOrders = await _orderService.GetAllEntityAsync();
+            var allOrders = await _orderItemService.GetAllEntityAsync();
+            var order = allOrders.FirstOrDefault(o => o.OrderID == orderId );
             Console.WriteLine("Order Found: " + order?.OrderID);
 
             if (order == null)
@@ -484,10 +491,25 @@ namespace MarvelWebApp.Controllers
                 return NotFound(new { message = "Order not found." });
             }
             Console.WriteLine("Order ID: " + order.OrderID);
-            Console.WriteLine("Total Price: " + order.TotalPrice);
-            Console.WriteLine("Order Date: " + order.OrderDate);
-            Console.WriteLine("Order Details: " + order.OrderDetails);
-            // You can also print order items if needed
+                var orderItems = await _orderItemService.GetAllEntityAsync();
+                var itemsForOrder = orderItems.Where(oi => oi.OrderID == order.OrderID).ToList();
+
+                Console.WriteLine("=== Order Items ===");
+                foreach (var item in itemsForOrder)
+                {
+                    Console.WriteLine($"  Comic ID: {item.ComicID}, Quantity: {item.Quantity}, Price: {item.PriceAtPurchase:C}");
+                }
+                Console.WriteLine("=== End of Order Items ===");
+//             Console.WriteLine("Total Price: " + order.TotalPrice);
+//             Console.WriteLine("Order Date: " + order.OrderDate);
+//             Console.WriteLine("Order Details: " + order.OrderDetails);
+//             // You can also print order items if needed
+// //             Console.WriteLine("Order Items:");   
+// //            ERROR
+//             foreach (var item in order.OrderItems)
+//             {
+//                 Console.WriteLine($"  Comic ID: {item.ComicID}, Quantity: {item.Quantity}, Price: {item.PriceAtPurchase:C}");
+//             }   
 
             return Ok(order); // Return order details as JSON
         }
@@ -495,37 +517,46 @@ namespace MarvelWebApp.Controllers
         [HttpGet("payments")]
         public async Task<IActionResult> ViewPayments()
         {
-            Console.WriteLine("=== View Payments ===");
-            // Get the current user
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return Unauthorized(); // Ensure user is logged in
-            }
 
-            // Get all payments and find the user's payments
-            Console.WriteLine("User ID: " + user.Id);
-            Console.WriteLine("User Name: " + user.UserName);
+    Console.WriteLine("=== View Payments ===");
 
-            var allPayments = await _paymentService.GetAllEntityAsync();
-            var userPayments = allPayments.Where(p => p.Order.UserID == user.Id).ToList();
+    var user = await _userManager.GetUserAsync(User);
+    if (user == null)
+    {
+        return Unauthorized(); // Ensure user is logged in
+    }
 
-            Console.WriteLine("User Payments: " + userPayments.Count);
+    Console.WriteLine("User ID: " + user.Id);
+    Console.WriteLine("User Name: " + user.UserName);
 
-            if (!userPayments.Any())
-            {
-                return NotFound(new { message = "No payments found for this user." });
-            }
+    var allPayments = await _paymentService.GetAllEntityAsync();
+    Console.WriteLine("All Payments: " + allPayments.Count);
+    Console.WriteLine("=== All Payments ===");
+    var userPayments = allPayments
+        .Where(p => p.OrderID != null) // Ensure the payment is associated with an order
+        .Select(p => new
+        {
+            p.PaymentID,
+            p.OrderID,
+            p.PaymentAmount,
+            PaymentDate = p.PaymentDate.ToString("yyyy-MM-dd HH:mm:ss"),
+            p.TransactionID
+        })
+        .ToList();
 
-            Console.WriteLine("=== User Payments ===");
-            foreach (var payment in userPayments)
-            {
-                Console.WriteLine($"Payment ID: {payment.PaymentID}, Amount: {payment.PaymentAmount:C}, Date: {payment.PaymentDate}, Transaction ID: {payment.TransactionID}");
-                // You can also print order details if needed
-                Console.WriteLine($"  Order ID: {payment.Order.OrderID}, Total Price: {payment.Order.TotalPrice:C}");
-            }
+    Console.WriteLine("=== User Payments ===");
+    foreach (var payment in userPayments)
+    {
+        Console.WriteLine($"Payment ID: {payment.PaymentID}");
+        Console.WriteLine($"Order ID: {payment.OrderID}");
+        Console.WriteLine($"Payment Amount: {payment.PaymentAmount:C}");
+        Console.WriteLine($"Payment Date: {payment.PaymentDate}");
+        Console.WriteLine($"Transaction ID: {payment.TransactionID}");
+        Console.WriteLine("---");
+    }
 
-            return Ok(userPayments); // Return user's payments as JSON
+    return Ok(userPayments);
+
         }
 
     }
