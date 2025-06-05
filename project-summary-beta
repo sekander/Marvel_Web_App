@@ -1,0 +1,1041 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using MarvelWebApp.Data;
+using MarvelWebApp.Models;
+using MarvelWebApp.Interface;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+// Configure MySQL with Pomelo
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 25)))); // Replace with your MySQL version
+
+// Add ASP.NET Core Identity
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddControllersWithViews();
+builder.Services.AddScoped(typeof(IEntityService<>), typeof(EntityService<>));
+
+
+var app = builder.Build();
+
+// Seed the database with roles and default users
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+    // Initialize the database with roles and a default admin user
+    await DbInitializer.Initialize(services, userManager, roleManager);
+}
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.MapControllers();
+
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+// Redirect unauthenticated users to login page
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// app.MapControllerRoute(
+//     name: "login",
+//     pattern: "Account/Login",
+//     defaults: new { controller = "Account", action = "Login" });
+
+// app.MapControllerRoute(
+//     name: "logout",
+//     pattern: "Admin/Logout",
+//     defaults: new { controller = "Admin", action = "Logout" });
+
+app.MapFallbackToController("Login", "Account");
+
+// app.MapControllerRoute(
+//     name: "default",
+//     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.Run();
+
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using MarvelWebApp.Models;
+using MarvelWebApp.Interface;
+using System.Threading.Tasks;
+
+namespace MarvelWebApp.Controllers
+{
+    [Route("api/admin")]
+    [ApiController]
+    public class AdminAPIController : BaseEntityController<ApplicationUser>
+    {
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+        // private static readonly userID
+        private ApplicationUser _user;
+
+        public AdminAPIController(
+            IEntityService<ApplicationUser> entityService,
+            UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager
+        ) : base(entityService)
+        {
+            _userManager = userManager;
+            _roleManager = roleManager;
+        }
+
+        // GET: api/admin/users
+        [HttpGet("users")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            return await GetAllEntities();
+        }
+        // GET: api/admin/users/email/{email}
+        [HttpGet("users/email/{email}")]
+        public async Task<IActionResult> GetUserIdByEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+            return BadRequest(new { message = "Email is required" });
+            }
+
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+            return NotFound(new { message = "User not found" });
+            }
+            else 
+                _user = user;
+
+            return Ok(new { userId = user.Id });
+        }
+
+        // GET: api/admin/users/5
+        [HttpGet("users/{id}")]
+        // public async Task<IActionResult> GetUserById(int id)
+        public async Task<IActionResult> GetUserById(string id)
+        {
+            var existingUser = await _userManager.FindByIdAsync(id);
+            //return await GetEntity(existingUser);
+            return Ok (new { user = existingUser});
+        }
+
+        // POST: api/admin/users
+        [HttpPost("users")]
+        // public async Task<IActionResult> CreateUser([FromBody] ApplicationUser user, [FromQuery] string password)
+        public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest user)
+        
+        {
+            if (ModelState.IsValid)
+            {
+
+
+                if (string.IsNullOrEmpty(user.Email))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        message = "Email is required"
+                    });
+                }
+
+                var existingUser = await _userManager.FindByEmailAsync(user.Email);
+                if (existingUser != null)
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        message = "Email already exists"
+                    });
+                }
+
+                var addUser = new ApplicationUser
+                {
+                    UserName = user.Email,
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    // Password = user.Password
+                };
+
+                //Debug
+                Console.WriteLine("User: " + addUser.UserName);
+                Console.WriteLine("Email: " + addUser.Email);
+                Console.WriteLine("First Name: " + addUser.FirstName);
+                Console.WriteLine("Last Name: " + addUser.LastName);
+                Console.WriteLine("Password: " + user.Password);  
+
+                var result = await _userManager.CreateAsync(addUser, user.Password); // Default password for demo purposes
+                if (result.Succeeded)
+                {
+                    return Ok(new
+                    {
+                        success = true,
+                        message = "User created successfully",
+                        data = user
+                    });
+                }
+
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Error creating user",
+                    errors = result.Errors
+                });
+            }
+            return BadRequest(new { message = "Invalid model state", errors = ModelState });
+        }
+
+        // PUT: api/admin/users/5
+        [HttpPut("users/{id}")]
+        public async Task<IActionResult> UpdateUser(string id, [FromBody] ApplicationUser user)
+        // public async Task<IActionResult> UpdateUser([FromBody] ApplicationUser user)
+        {
+            // if (id != int.Parse(user.Id))
+            if (id != user.Id)
+            {
+                return BadRequest(new { message = "ID mismatch" });
+            }
+
+            var existingUser = await _userManager.FindByIdAsync(id);
+            // var existingUser = await _userManager.FindByEmailAsync(user.Email);
+
+            if (existingUser == null )
+            // if (_user == null)
+            {
+                return NotFound(new { message = "User not found" });
+            }
+
+
+            // Update user properties
+            existingUser.UserName = user.UserName;
+            existingUser.Email = user.Email;
+            // _user.UserName = user.UserName;
+            // _user.Email = user.Email;
+
+            // var updateResult = await _userManager.UpdateAsync(existingUser);
+            var updateResult = await _userManager.UpdateAsync(_user);
+            if (updateResult.Succeeded)
+            {
+                return Ok(new
+                {
+                    success = true,
+                    message = "User updated successfully",
+                    data = user
+                });
+            }
+
+            return BadRequest(new
+            {
+                success = false,
+                message = "Error updating user",
+                errors = updateResult.Errors
+            });
+        }
+
+        // DELETE: api/admin/users/5
+        [HttpDelete("users/{id}")]
+        // public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var existingUser = await _userManager.FindByIdAsync(id);
+            if (existingUser == null)
+            {
+                return NotFound(new { message = "User not found" });
+            }
+
+            var deleteResult = await _userManager.DeleteAsync(existingUser);
+            if (deleteResult.Succeeded)
+            {
+                return Ok(new
+                {
+                    success = true,
+                    message = "User deleted successfully",
+                    data = id
+                });
+            }
+
+            return BadRequest(new
+            {
+                success = false,
+                message = "Error deleting user",
+                errors = deleteResult.Errors
+            });
+        }
+
+        // POST: api/admin/assign-role/5
+        [HttpPost("assign-role/{userId}")]
+        // public async Task<IActionResult> AssignRoleToUser(int userId, [FromBody] string role)
+        public async Task<IActionResult> AssignRoleToUser(string userId, [FromBody] string role)
+        {
+            // var user = await _userManager.FindByIdAsync(userId.ToString());
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound(new { message = "User not found" });
+            }
+
+            if (!await _roleManager.RoleExistsAsync(role))
+            {
+                return BadRequest(new { message = $"Role '{role}' does not exist" });
+            }
+
+            var result = await _userManager.AddToRoleAsync(user, role);
+            // _userManager.RemoveFromRoleAsync(user, "User");
+            if (result.Succeeded)
+            {
+                return Ok(new
+                {
+                    success = true,
+                    message = $"Role '{role}' assigned to user {user.UserName} successfully"
+                });
+            }
+
+            return BadRequest(new
+            {
+                success = false,
+                message = "Error assigning role",
+                errors = result.Errors
+            });
+        }
+    }
+}
+using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Mvc;
+using MarvelWebApp.Interface;
+using MarvelWebApp.Models;
+
+
+/*
+SUMMARY
+    This BaseEntityController<T> class is a generic API controller used to handle 
+    CRUD operations for different entities (T). It provides common actions like 
+    retrieving all entities, retrieving an entity by ID, creating, updating, 
+    and deleting entities. It also includes a validation method and a mechanism to 
+    save changes to the database.
+*/
+
+[Route("api/[controller]")]
+[ApiController]
+public class BaseEntityController<T> : ControllerBase where T : class
+{
+    private readonly IEntityService<T> _entityService;
+
+    // Provides access to the entity service used for database operations
+    public IEntityService<T> GetService(){return _entityService;}
+
+    // Enum to handle validation states for Create and Update operations
+    protected enum ValidationState
+    {
+        CREATE,
+        UPDATE
+    }
+    
+    // Default message to be returned during validation errors
+    protected string return_message = "";
+    // Flag to indicate if the controller is in its initial state (used for optimization)
+    protected static bool _controllerInitialState = false;
+    
+    // Protected constructor to ensure derived classes can initialize the service
+    protected BaseEntityController(IEntityService<T> entityService)
+    {
+        _entityService = entityService;
+    }
+
+
+
+    /// <summary>
+    /// Retrieves all entities of type T from the database.
+    /// </summary>
+    /// <returns>Returns a list of all entities of type T.</returns>
+    [HttpGet]
+    public async virtual Task<IActionResult> GetAllEntities()
+    {
+        var entities = await _entityService.GetAllEntityAsync();
+        return Ok(entities);
+        
+    }
+
+    /// <summary>
+    /// Retrieves a specific entity of type T by its ID.
+    /// </summary>
+    /// <param name="id">The ID of the entity to retrieve.</param>
+    /// <returns>Returns the entity with the specified ID, or an error message if not found.</returns>
+    [HttpGet("{id}")]
+    public async virtual Task<IActionResult> GetEntity(int id)
+    {
+        var entity = await _entityService.GetEntityByIdAsync(id);
+        if ( id <= 0)
+        {
+            return BadRequest(new  {
+                success = false,
+                data = id,
+                message = "Please Enter an ID greater than 0",
+                requestedId = id
+            });
+        }
+        else if (entity == null) return BadRequest(new {
+                success = false,
+                data = id,
+                message = "ID not found",
+                requestedId = id
+            });
+        else{
+            return Ok(entity);
+        }
+        // return (IActionResult)entity;
+    }
+
+    /// <summary>
+    /// Creates a new entity of type T in the database.
+    /// </summary>
+    /// <param name="entity">The entity object to create.</param>
+    /// <returns>Returns a success message with the created entity.</returns>
+    [HttpPost]
+    public async virtual Task<IActionResult> CreateEntity([FromBody] T entity)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(new
+            {
+                message = "Invalid data",
+                errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)
+            });
+        }
+        else{
+            await _entityService.CreateEntityAsync(entity);
+            // return CreatedAtAction(nameof(GetEntity), new { id = entity.GetType().GetProperty("ID").GetValue(entity) }, entity);
+            return Ok(new 
+            {
+                success = true,
+                data = entity,
+                message = "Created: " + entity,
+            });
+        }
+    }
+
+    /// <summary>
+    /// Updates an existing entity of type T in the database.
+    /// </summary>
+    /// <param name="entity">The entity object to update.</param>
+    /// <returns>Returns a success message with the updated entity.</returns>
+    [HttpPut]
+    public async virtual Task<IActionResult> UpdateEntity([FromBody] T entity)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(new
+            {
+                message = "Invalid data",
+                errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)
+            });
+        }
+        else {
+            // await _entityService.UpdateEntityAsync(id, entity);
+            await _entityService.UpdateEntityAsync(entity);
+            return Ok(new 
+            {
+                success = true,
+                data = entity,
+                message = "Updated: " + entity,
+            });
+        }
+    }
+
+    /// <summary>
+    /// Deletes a specific entity of type T by its ID.
+    /// </summary>
+    /// <param name="id">The ID of the entity to delete.</param>
+    /// <returns>Returns a success message if the entity was deleted, or an error message if not found.</returns>
+    [HttpDelete("{id}")]
+    public async virtual Task<IActionResult> DeleteEntity(int id)
+    {
+        var entity = await _entityService.GetEntityByIdAsync(id);
+
+        if ( id <= 0)
+        {
+            return BadRequest(new  
+            {
+                success = false,
+                data = id,
+                message = "Please Enter an ID greater than 0",
+                requestedId = id
+            });
+        }
+        else if (entity == null) return BadRequest(new {
+                success = false,
+                data = id,
+                message = "ID not found",
+                requestedId = id
+            });
+        else {
+            await _entityService.DeleteEntityAsync(id);
+            return Ok(new 
+            {
+                success = true,
+                data = id,
+                message = "Deleted : " + id,
+                requestedId = id
+            });
+        }
+    }
+}using Microsoft.AspNetCore.Mvc;
+using MarvelWebApp.Models;
+using MarvelWebApp.Interface;
+using System.Threading.Tasks;
+
+namespace MarvelWebApp.Controllers
+{
+    [Route("api/manager")]
+    [ApiController]
+    // [Authorize(Roles = "Manager")]
+    public class ManagerAPIController : BaseEntityController<Comic>
+    {
+        private readonly IEntityService<Comic> _entityService;
+
+        // Pass it to the base controller
+        public ManagerAPIController(IEntityService<Comic> entityService)
+            : base(entityService) 
+        {
+            _entityService = entityService;
+        }
+
+        // GET: api/manager/comic/id
+        [HttpGet("comic/{id}")]
+        public async Task<IActionResult> GetComic(int id)
+        {
+            var comic = await _entityService.GetEntityByIdAsync(id);
+            if (comic == null)
+            {
+                return NotFound(new { message = "Comic not found" });
+            }
+
+            return Ok(new {comic});
+        }
+
+        // POST: api/manager/comics
+        [HttpPost("comics")]
+        public async Task<IActionResult> AddComic([FromBody] Comic comic)
+        {
+            if (comic == null)
+            {
+                return BadRequest(new { message = "Invalid comic data" });
+            }
+
+            await _entityService.CreateEntityAsync(comic);
+            return Ok(new { message = "Comic added successfully" });
+        }
+
+        // PUT: api/manager/comic/{id}
+        [HttpPut("comic/{id}")]
+        public async Task<IActionResult> UpdateComicQuantity(int id, [FromBody] int quantity)
+        {
+            var comic = await _entityService.GetEntityByIdAsync(id);
+            if (comic == null)
+            {
+                return NotFound(new { message = "Comic not found" });
+            }
+
+            comic.Quantity = quantity;
+            await _entityService.UpdateEntityAsync(comic);
+            
+            return Ok(new { message = "Comic quantity updated successfully" });
+        }
+
+        // DELETE: api/manager/comics/{id}
+        [HttpDelete("comics/{id}")]
+        public async Task<IActionResult> DeleteComic(int id)
+        {
+            var comic = await _entityService.GetEntityByIdAsync(id);
+            if (comic == null)
+            {
+                return NotFound(new { message = "Comic not found" });
+            }
+            
+            await _entityService.DeleteEntityAsync(id);
+
+
+            return Ok(new { message = "Comic deleted successfully" });
+        }
+    }
+}
+using Microsoft.AspNetCore.Mvc;
+using MarvelWebApp.Models;
+using MarvelWebApp.Interface;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Linq;
+using System;
+
+namespace MarvelWebApp.Controllers
+{
+    [Route("api/user")]
+    [ApiController]
+    public class UserAPIController : ControllerBase
+    {
+        private readonly IEntityService<Comic> _comicService;
+        private readonly IEntityService<ShoppingCart> _cartService;
+        private readonly IEntityService<ShoppingCartItem> _cartItemService;
+        private readonly IEntityService<Order> _orderService;
+        private readonly IEntityService<Payment> _paymentService;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public ShoppingCart userCart;
+
+        public UserAPIController(
+            IEntityService<Comic> comicService,
+            IEntityService<ShoppingCart> cartService,
+            IEntityService<ShoppingCartItem> cartItemService,
+            IEntityService<Order> orderService,
+            IEntityService<Payment> paymentService,
+            UserManager<ApplicationUser> userManager)
+        {
+            _comicService = comicService;
+            _cartService = cartService;
+            _cartItemService = cartItemService;
+            _orderService = orderService;
+            _paymentService = paymentService;
+            _userManager = userManager;
+        }
+
+        // 1. View all comics
+        [HttpGet("comics")]
+        public async Task<IActionResult> ViewComics()
+        {
+            var comics = await _comicService.GetAllEntityAsync();
+            return Ok(comics); // Return a list of comics as JSON
+        }
+
+        // 2. Add comic to the shopping cart
+        [HttpPost("shopping-cart/add/{comicId}")]
+        public async Task<IActionResult> AddToCart(int comicId, int quantity)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Unauthorized(); // Ensure user is logged in
+            }
+
+            // ShoppingCart cart;
+            // string userID =  
+
+            // Check if shopping cart exists for the user
+            // var cart = await _cartService.GetEntityByIdAsync(user.Id);
+            // if (cart == null)
+            // {
+                // Create a new shopping cart if one doesn't exist
+                // cart = new ShoppingCart
+                
+                userCart = new ShoppingCart
+                {
+                    UserID = user.Id,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now
+                };
+                // await _cartService.CreateEntityAsync(cart);
+                await _cartService.CreateEntityAsync(userCart);
+            // }
+
+            // Fetch comic from the database
+            var comic = await _comicService.GetEntityByIdAsync(comicId);
+            if (comic == null)
+            {
+                return NotFound(new { message = "Comic not found" }); // Comic not found
+            }
+
+            // Add the comic to the shopping cart
+            var cartItem = new ShoppingCartItem
+            {
+                // ShoppingCartID = cart.ShoppingCartID,
+                ShoppingCartID = userCart.ShoppingCartID,
+                ComicID = comic.ComicID,
+                Quantity = quantity,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+                PriceAtAdd = comic.Price
+            };
+
+            await _cartItemService.CreateEntityAsync(cartItem);
+
+            return Ok(new { message = "Comic added to shopping cart successfully" });
+        }
+
+        // 3. Checkout and make a purchase
+        [HttpPost("purchase")]
+        public async Task<IActionResult> Checkout()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Unauthorized(); // Ensure user is logged in
+            }
+
+            // var carts = _cartService.GetAllEntityAsync();
+            // var cart;
+            // // Clear the shopping cart after successful purchase
+            // foreach (var item in carts)
+            // {
+            //     // await _cartItemService.DeleteEntityAsync(item.ShoppingCartItemID);
+            //     if (item.UserID == user.Id){
+            //         cart = item;
+            //     }
+                    
+
+            // }
+            
+
+            // Fetch the shopping cart and its items
+            // var cart = await _cartService.GetEntityByIdAsync(user.Id);
+            // if (cart == null || !cart.ShoppingCartItems.Any())
+            // {
+                // return BadRequest(new { message = "Shopping cart is empty" });
+            // }
+
+            // Calculate the total price of the cart
+            // decimal totalPrice = cart.ShoppingCartItems.Sum(item => item.PriceAtAdd * item.Quantity);
+            decimal totalPrice = userCart.ShoppingCartItems.Sum(item => item.PriceAtAdd * item.Quantity);
+
+            // Create an order
+            var order = new Order
+            {
+                UserID = user.Id,
+                OrderDate = DateTime.Now,
+                TotalPrice = totalPrice,
+                // OrderItems = cart.ShoppingCartItems.Select(item => new OrderItem
+                OrderItems = userCart.ShoppingCartItems.Select(item => new OrderItem
+                {
+                    ComicID = item.ComicID,
+                    Quantity = item.Quantity,
+                    PriceAtPurchase = item.PriceAtAdd
+                }).ToList()
+            };
+
+            await _orderService.CreateEntityAsync(order);
+
+            // Create a payment
+            var payment = new Payment
+            {
+                OrderID = order.OrderID,
+                PaymentDate = DateTime.Now,
+                PaymentAmount = totalPrice,
+                TransactionID = new Random().Next(100000, 999999) // Example transaction ID
+            };
+
+            await _paymentService.CreateEntityAsync(payment);
+
+            // Clear the shopping cart after successful purchase
+            // foreach (var item in cart.ShoppingCartItems)
+            foreach (var item in userCart.ShoppingCartItems)
+            {
+                await _cartItemService.DeleteEntityAsync(item.ShoppingCartItemID);
+            }
+
+            return Ok(new { message = "Purchase successful" });
+        }
+    }
+}
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using MarvelWebApp.Models;
+using System.Threading.Tasks;
+
+namespace MarvelWebApp.Controllers
+{
+    public class AccountController : Controller
+    {
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
+        {
+            _signInManager = signInManager;
+            _userManager = userManager;
+        }
+
+        // GET: /Account/Login
+        [Route("Account/Login")]
+        public IActionResult Login()
+        {
+            Console.WriteLine("Login attempt TESTING ");
+            return View();
+        }
+
+        // POST: /Account/Login
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+            [Route("Account/Login")]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            Console.WriteLine("Login attempt");
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+
+                if (user != null)
+                {
+                        Console.WriteLine("User exists");
+                    var result = await _signInManager.PasswordSignInAsync(user, model.Password, isPersistent: false, lockoutOnFailure: false);
+
+                    if (result.Succeeded)
+                    {
+                        Console.WriteLine("Login Success");
+
+                        // return RedirectToAction("Dashboard", "Account");
+                        // Check user roles and redirect accordingly
+                        var roles = await _userManager.GetRolesAsync(user);
+
+                        if (roles.Contains("Admin"))
+                        {
+                            Console.WriteLine("Admin Success");
+                            // return View("Admin/Dashboard");
+                                    return RedirectToAction("Dashboard", "Admin");
+                                    // return RedirectToAction("Dashboard", "AdminView");
+                                    // return RedirectToAction("Dashboard", "AdminView/Dashboard");
+                                    // return RedirectToAction("Dashboard", "Admin/Dashboard");
+                            
+
+                        }
+                        else if (roles.Contains("Manager"))
+                        {
+                            Console.WriteLine("Manager Success");
+                            return RedirectToAction("Dashboard", "Manager");
+                        }
+                        else if (roles.Contains("User"))
+                        {
+                            Console.WriteLine("User Success");
+                            return RedirectToAction("Dashboard", "User");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Default Success");
+                            // Default dashboard for unclassified roles
+                            return RedirectToAction("Index", "Home");
+                        }
+                    }
+                    else
+                    {
+                            Console.WriteLine("Default Success");
+                        ViewData["ErrorMessage"] = "Invalid login attempt.";
+                    }
+                }
+                else
+                {
+                            Console.WriteLine("Default Success");
+                    ViewData["ErrorMessage"] = "User does not exist.";
+                }
+            }
+            return View(model);
+        }
+
+        // POST: /Account/Logout
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+    }
+}using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace MarvelWebApp.Controllers
+{
+    [Authorize(Roles = "Admin")]
+    [Route("Admin")]
+    public class AdminViewController : Controller
+    {
+        // Admin Dashboard
+            [Route("Dashboard")]
+        public IActionResult Dashboard()
+        {
+            Console.WriteLine("Admin Dashboard");
+            // You can add business logic here, such as fetching data or statistics.
+            return View("../Admin/Dashboard");
+        }
+
+        // Admin-specific settings or actions could go here
+            [Route("Settings")]
+        public IActionResult Settings()
+        {
+            return View();
+        }
+
+        // Logout action
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+            [Route("Logout")]
+        public async Task<IActionResult> Logout()
+        {
+            Console.WriteLine("Admin Logout");
+            await HttpContext.SignOutAsync();
+
+    // Set cache control headers to prevent caching of authenticated pages
+    // Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+    // Response.Headers["Pragma"] = "no-cache";
+    // Response.Headers["Expires"] = "0";
+    // Loop through all cookies in the request and delete them from the response
+    foreach (var cookie in Request.Cookies)
+    {
+        Response.Cookies.Delete(cookie.Key);
+        Console.WriteLine($"Deleted cookie: {cookie.Key}");
+    }
+
+    // Optionally, clear session data (if used)
+    // HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
+        // [HttpGet("/test")]
+        [HttpGet("Test")]
+        public async Task<IActionResult> Test()
+        {
+            Console.WriteLine("Admin ETST Logout");
+            return Ok("Test");
+        }
+    }
+}using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace MarvelWebApp.Controllers
+{
+    [Authorize(Roles = "Manager")]
+    public class ManagerViewController : Controller
+    {
+        public IActionResult Dashboard()
+        {
+            Console.WriteLine("Manager Dashboard");
+            return View();
+        }
+    }
+}
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace MarvelWebApp.Controllers
+{
+    [Authorize(Roles = "User")]
+    public class UserViewController : Controller
+    {
+        public IActionResult Dashboard()
+        {
+            Console.WriteLine("User Dashboard");
+            return View();
+        }
+    }
+}
+@page
+@model MarvelWebApp.Models.LoginViewModel
+@{
+    @* ViewData["Title"] = "Login"; *@
+}
+
+@* <h2>@ViewData["Title"]</h2> *@
+
+<form method="post">
+    @Html.AntiForgeryToken()  <!-- Add this line to include the anti-forgery token -->
+    <div class="form-group">
+        <label for="Input_Email">Email</label>
+                @* <label for="Email">Email</label>
+                        <input type="email" id="Email" name="Email" class="form-control" required /> *@
+        <input type="email" id="Input_Email" name="Email" class="form-control" required />
+    </div>
+    <div class="form-group">
+                @* <label for="Password">Password</label> *@
+        <label for="Input_Password">Password</label>
+        <input type="password" id="Input_Password" name="Password" class="form-control" required />
+                @* <input type="password" id="Password" name="Password" class="form-control" required /> *@
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+@* @if (ViewData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger mt-3">
+        @ViewData["ErrorMessage"]
+    </div>
+} *@
+
+@{
+    ViewData["Title"] = "Dashboard";
+    var role = User.IsInRole("Admin") ? "Admin" :
+               User.IsInRole("Manager") ? "Manager" : 
+               "User";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (role == "Admin")
+{
+    <p>Welcome, Admin! You have full access to the application.</p>
+    <!-- Add admin-specific content here -->
+}
+else if (role == "Manager")
+{
+    <p>Welcome, Manager! You have limited access compared to an Admin.</p>
+    <!-- Add manager-specific content here -->
+}
+else
+{
+    <p>Welcome, User! This is your personal dashboard.</p>
+    <!-- Add user-specific content here -->
+}
+
+<!-- Logout Button Form -->
+<form method="post" asp-action="Logout" asp-controller="Account" class="mt-3">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>@{
+    ViewData["Title"] = "Dashboard";
+    var role = User.IsInRole("Admin") ? "Admin" :
+               User.IsInRole("Manager") ? "Manager" : 
+               "User";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (role == "Admin")
+{
+    <p>Welcome, Admin! You have full access to the application.</p>
+    <!-- Add admin-specific content here -->
+}
+else if (role == "Manager")
+{
+    <p>Welcome, Manager! You have limited access compared to an Admin.</p>
+    <!-- Add manager-specific content here -->
+}
+else
+{
+    <p>Welcome, User! This is your personal dashboard.</p>
+    <!-- Add user-specific content here -->
+}
+
+<!-- Logout Button Form -->
+<form method="post" asp-action="Logout" asp-controller="Account" class="mt-3">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>
